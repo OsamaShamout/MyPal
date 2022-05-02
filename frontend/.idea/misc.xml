@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ripple.xml" value="0.1555" />
+        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.11822916666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
       </map>
     </option>
