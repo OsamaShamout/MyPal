@@ -20,4 +20,9 @@ public class LogIn extends AppCompatActivity {
         Intent intent = new Intent(this,Welcome.class);
         startActivity(intent);
     }
+
+    public void OnClickGoToRegistration(View view){
+        Intent intent = new Intent(this,Registration.class);
+        startActivity(intent);
+    }
 }
