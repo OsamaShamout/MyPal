@@ -25,4 +25,9 @@ public class LogIn extends AppCompatActivity {
         Intent intent = new Intent(this,Registration.class);
         startActivity(intent);
     }
+
+    public void OnClickLogIn(View view){
+        Intent intent = new Intent(this,Homepage.class);
+        startActivity(intent);
+    }
 }
