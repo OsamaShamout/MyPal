@@ -55,6 +55,7 @@
         android:layout_height="54dp"
         android:background="@drawable/ripple"
         android:fontFamily="@font/roboto_bold"
+        android:onClick="OnClickGetStarted"
         android:text="@string/button_get_started"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
