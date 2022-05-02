@@ -8,11 +8,134 @@
     tools:context=".LogIn">
 
     <Button
+        android:id="@+id/loginButton"
+        android:layout_width="306dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/ripple"
+        android:fontFamily="@font/roboto_bold"
+        android:onClick="OnClickReturnToWelcome"
+        android:text="@string/log_in"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:cornerRadius="0dp"
+        app:iconPadding="1dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeAnim"
+        app:layout_constraintVertical_bias="0.553" />
+
+    <ImageView
+        android:id="@+id/emailImage2"
+        android:layout_width="33dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575"
+        app:srcCompat="@drawable/email_2" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="288dp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:text="Email"
+        android:textColor="#22215B"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress2"
+        android:layout_width="293dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="10dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textColorHint="#8022215B"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.731"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.567" />
+
+    <TextView
+        android:id="@+id/passwordTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="288dp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:text="Password"
+        android:textColor="#22215B"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.631" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="293dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textColorHint="#8022215B"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.731"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextView"
+        app:layout_constraintVertical_bias="0.301" />
+
+    <ImageView
+        android:id="@+id/passwordImage"
+        android:layout_width="41dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.709"
+        app:srcCompat="@drawable/password_2" />
+
+    <Button
         android:id="@+id/welcomeReturn"
         android:layout_width="96dp"
-        android:layout_height="34dp"
+        android:layout_height="48dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="6dp"
         android:background="#0FFFFFFF"
         android:onClick="OnClickReturnToWelcome"
         android:text=" Welcome"
@@ -20,15 +143,16 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintHorizontal_bias="0.184"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.015" />
+        app:layout_constraintVertical_bias="0.014" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="30dp"
-        android:layout_height="34dp"
+        android:id="@+id/backWelcomeButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="1dp"
         android:backgroundTint="#FFFFFF"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,18 +161,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022"
-        app:srcCompat="@drawable/left_arrow" />
+        app:srcCompat="@drawable/left_arrow"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="284dp"
-        android:layout_height="285dp"
+        android:id="@+id/logoLogIn"
+        android:layout_width="267dp"
+        android:layout_height="267dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:fadeScrollbars="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132"
+        app:srcCompat="@drawable/mypal_logo" />
+
+    <ImageButton
+        android:id="@+id/showPassword"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="11dp"
+        android:background="#FFFFFF"
+        android:onClick="OnClickReturnToWelcome"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.691"
+        app:srcCompat="@drawable/visible_eye_2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/alternativeRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#0FFFFFFF"
+        android:onClick="OnClickReturnToWelcome"
+        android:text="@string/alternative_log_in_reg"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypallogo" />
+        app:layout_constraintVertical_bias="0.893" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

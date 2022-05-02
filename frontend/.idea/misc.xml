@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/email_2.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/ripple.xml" value="0.1555" />
-        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.2933258056640625" />
+        <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.15785813630041726" />
+        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.18947204589843755" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.5488733927408854" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.11822916666666666" />
+        <entry key="app/src/main/res/layout/fragment_scrolling.xml" value="0.165" />
       </map>
     </option>
   </component>
