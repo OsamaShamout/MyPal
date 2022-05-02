@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyPal</string>
+    <string name="welcome_text">Welcome to a world beyond your <font color='#000A63'>device.</font></string>
+    <string name="button_get_started">Get Started!</string>
+    <string name="join_text">Join the community.</string>
+    <string name="community_imagedesc">Community Image</string>
+</resources>
