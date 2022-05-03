@@ -92,11 +92,11 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
-                    android:id="@+id/yourActivitiesText"
+                    android:id="@+id/upcomingEventsText"
                     android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Your\nActivities"
+                    android:text="Upcoming Events"
                     android:textColor="#4F4F4F"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -117,11 +117,11 @@
                     app:layout_constraintHorizontal_bias="0.047"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.322"
+                    app:layout_constraintVertical_bias="0.323"
                     app:srcCompat="@drawable/calendar" />
 
                 <HorizontalScrollView
-                    android:id="@+id/horizontalScoll1"
+                    android:id="@+id/horizontalScollFriends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="70dp"
@@ -363,7 +363,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.95">
+                    app:layout_constraintVertical_bias="0.96">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -564,7 +564,7 @@
                     app:layout_constraintHorizontal_bias="0.886"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.083"
+                    app:layout_constraintVertical_bias="0.07999998"
                     app:srcCompat="@drawable/notification_indicator" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -580,7 +580,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.708"
-                    app:srcCompat="@drawable/plus_sign" />
+                    app:srcCompat="@drawable/plus_sign"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
