@@ -58,4 +58,85 @@
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/mypal_logo_3" />
 
+    <ImageButton
+        android:id="@+id/notificationsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="595dp"
+        android:backgroundTint="#000A63"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mainpageLogoImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_alert" />
+
+    <ImageView
+        android:id="@+id/notificationIndicator"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="225dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="578dp"
+        android:alpha="0"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/mainpageLogoImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.426"
+        tools:srcCompat="@drawable/notification_indicator" />
+
+    <ImageView
+        android:id="@+id/iconCalendar"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:srcCompat="@drawable/calendar"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="248dp" />
+
+    <TextView
+        android:id="@+id/activitiesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Your\nActivities"
+        android:textColor="#4F4F4F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="@+id/iconCalendar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.291" />
+
+    <ImageButton
+        android:id="@+id/firstActivity"
+        android:layout_width="207dp"
+        android:layout_height="196dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557"
+        app:srcCompat="@drawable/beirut" />
+
+    <TextView
+        android:id="@+id/firstActivityButton"
+        android:layout_width="139dp"
+        android:layout_height="40dp"
+        android:background="#F9F9F9"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Road Trip"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.738" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
