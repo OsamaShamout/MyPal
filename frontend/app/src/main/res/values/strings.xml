@@ -20,4 +20,15 @@
 
     <string name="homepage_greetings">"Good morning,USERNAME </string>
     <string name="homepage_greetings2">"Good morning,\nOsama! </string>
+
+
+    //tags array
+    <string-array name="activity_tags">
+        <item>SDG</item>
+        <item>Outdoor</item>
+        <item>Indoor</item>
+        <item>Sports</item>
+        <item>Entertainment</item>
+        <item>Education</item>
+    </string-array>
 </resources>

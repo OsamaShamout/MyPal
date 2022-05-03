@@ -65,7 +65,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/friendImage1"
+                    android:id="@+id/activityImage"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginRight="10dp"

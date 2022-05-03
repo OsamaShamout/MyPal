@@ -18,4 +18,25 @@ public class Registration extends AppCompatActivity {
         Intent intent = new Intent(this,LogIn.class);
         startActivity(intent);
     }
+
+    boolean signed_up = false;
+
+    public void OnClickRegister(View view){
+        //Gather registration information
+
+
+        //Send to DB
+
+
+        //If success pass user to logged in page.
+
+        signed_up = true;
+
+        if(signed_up){
+            Intent intent = new Intent(this,Homepage.class);
+            startActivity(intent);
+        }
+    }
+
+
 }

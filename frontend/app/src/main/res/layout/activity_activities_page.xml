@@ -7,7 +7,7 @@
     tools:context=".ActivitiesPage">
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/decreaseButton"
         android:layout_width="35dp"
         android:layout_height="38dp"
         android:layout_marginStart="1dp"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.62" />
 
     <ImageButton
-        android:id="@+id/backWelcomeButton2"
+        android:id="@+id/backButton2"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -108,7 +108,7 @@
         app:layout_constraintVertical_bias="0.047" />
 
     <ImageView
-        android:id="@+id/friendImage1"
+        android:id="@+id/activityImage"
         android:layout_width="330dp"
         android:layout_height="230dp"
         android:layout_marginStart="16dp"
@@ -122,26 +122,6 @@
         app:srcCompat="@drawable/animal" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/SDGs"
-        android:layout_width="69dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:background="#80FFACB7"
-        android:fontFamily="@font/nunito_sans"
-        android:text="SDG"
-        android:textAllCaps="false"
-        android:textColor="#DE6978"
-        android:textSize="12sp"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477"
-        app:shapeAppearanceOverlay="@style/roundedImageView" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/Outdoors"
         android:layout_width="69dp"
         android:layout_height="48dp"
@@ -153,10 +133,10 @@
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477"
+        app:layout_constraintVertical_bias="0.48"
         app:shapeAppearanceOverlay="@style/roundedImageView" />
 
     <TextView
@@ -209,7 +189,7 @@
         app:layout_constraintVertical_bias="0.748" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/line"
         android:layout_width="330dp"
         android:layout_height="2dp"
         android:layout_marginStart="16dp"
@@ -240,7 +220,7 @@
         app:layout_constraintVertical_bias="0.827" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/capacityNumber"
         android:layout_width="75dp"
         android:layout_height="38dp"
         android:background="#F4F4F4"
@@ -254,7 +234,7 @@
         app:layout_constraintVertical_bias="0.888" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/increaseButton"
         android:layout_width="35dp"
         android:layout_height="38dp"
         android:layout_marginTop="34dp"

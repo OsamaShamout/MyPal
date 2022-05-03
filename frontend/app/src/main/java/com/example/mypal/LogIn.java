@@ -26,8 +26,17 @@ public class LogIn extends AppCompatActivity {
         startActivity(intent);
     }
 
+    boolean logged_in = false;
     public void OnClickLogIn(View view){
-        Intent intent = new Intent(this,Homepage.class);
-        startActivity(intent);
+
+        //Validate Information from DB
+
+        logged_in = true;
+        //If true log in
+        if(logged_in){
+            Intent intent = new Intent(this,Homepage.class);
+            startActivity(intent);
+        }
+
     }
 }
