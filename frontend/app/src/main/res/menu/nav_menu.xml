@@ -2,9 +2,18 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:icon="@drawable/ic_home_na" android:title="Home" />
+    <item
+        android:icon="@drawable/ic_home"
+        android:title=""
+        android:id="@+id/home"/>
 
-    <item android:icon="@drawable/ic_heart_na"  android:title="Activities" />
+    <item
+        android:icon="@drawable/ic_heart"
+        android:title=""
+        android:id="@+id/favorites"/>/>
 
-    <item android:icon="@drawable/ic_profile_na" android:title="Profile" />
+    <item
+        android:icon="@drawable/ic_profile"
+        android:title=""
+        android:id="@+id/profile"/>/>
 </menu>
