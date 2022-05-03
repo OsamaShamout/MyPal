@@ -16,5 +16,11 @@
     <style name="roundedImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25dp</item>
+
+    </style>
+
+    <style name="roundedProfileImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">100dp</item>
     </style>
 </resources>
