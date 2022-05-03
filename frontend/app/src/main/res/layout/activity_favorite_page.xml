@@ -4,8 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Homepage">
+    tools:context=".FavoritePage">
 
+
+    <ImageView
+        android:id="@+id/mainpageLogoImage2"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mypal_logo_3" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavMenu"
@@ -47,24 +58,13 @@
                 android:layout_height="800dp"
                 android:background="@drawable/homescreen_2">
 
-                <ImageView
-                    android:id="@+id/mainpageLogoImage"
-                    android:layout_width="100dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="35dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.107"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/mypal_logo_3" />
-
                 <TextView
                     android:id="@+id/activityPageName"
                     android:layout_width="232dp"
                     android:layout_height="73dp"
                     android:ellipsize="marquee"
                     android:fontFamily="@font/nunito_sans_bold"
-                    android:text="@string/homepage_greetings2"
+                    android:text="Activities"
                     android:textColor="#FFFFFF"
                     android:textSize="26sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -96,29 +96,14 @@
                     android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Upcoming Events"
+                    android:text="Saved"
                     android:textColor="#4F4F4F"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.185"
+                    app:layout_constraintHorizontal_bias="0.105"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.348" />
-
-                <ImageView
-                    android:id="@+id/iconCalendar"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginTop="13dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.047"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.323"
-                    app:srcCompat="@drawable/calendar" />
+                    app:layout_constraintVertical_bias="0.347" />
 
                 <HorizontalScrollView
                     android:id="@+id/horizontalScollFriends"
@@ -329,29 +314,14 @@
                     android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Around\nYou"
+                    android:text="Your\nActivities"
                     android:textColor="#4F4F4F"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.185"
+                    app:layout_constraintHorizontal_bias="0.099"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.697" />
-
-                <ImageView
-                    android:id="@+id/iconLocation"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginTop="25dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.049"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.656"
-                    app:srcCompat="@drawable/location" />
 
                 <HorizontalScrollView
                     android:id="@+id/horizontalScrollView2"
