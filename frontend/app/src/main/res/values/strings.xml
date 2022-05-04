@@ -18,12 +18,19 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
-    <string name="homepage_greetings">"Good morning,USERNAME </string>
-    <string name="homepage_greetings2">"Good morning,\nOsama! </string>
+    <string name="homepage_greetings">Good morning,USERNAME </string>
+    <string name="homepage_greetings2">Good morning,\nOsama! </string>
+
+    <string name="activity_created">Share activity with people!</string>
+
+    <string name="copy_text">Copy URL</string>
+    <string name="done_copy">Done</string>
+
 
 
     //tags array
     <string-array name="activity_tags">
+        <item>Choose One</item>
         <item>SDG</item>
         <item>Outdoor</item>
         <item>Indoor</item>

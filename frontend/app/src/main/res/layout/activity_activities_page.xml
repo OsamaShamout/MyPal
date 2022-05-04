@@ -7,19 +7,20 @@
     tools:context=".ActivitiesPage">
 
     <ImageButton
-        android:id="@+id/decreaseButton"
-        android:layout_width="35dp"
-        android:layout_height="38dp"
+        android:id="@+id/decreaseMemberButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="616dp"
         android:layout_marginBottom="76dp"
         android:background="#F4F4F4"
+        android:onClick="decreaseMembers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintHorizontal_bias="0.381"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/subtract"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -31,6 +32,7 @@
         android:layout_marginStart="16dp"
         android:background="#5DDAC9"
         android:fontFamily="@font/bebas_neue"
+        android:onClick="registerMembers"
         android:text="Register"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
@@ -41,7 +43,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.976"
+        tools:ignore="TextContrastCheck" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -56,7 +59,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
-        app:srcCompat="@drawable/share_button" />
+        app:srcCompat="@drawable/share_button"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/activityName2"
@@ -163,6 +167,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="51dp"
         android:background="@drawable/icons"
+        android:onClick="addtoSaved"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.805"
@@ -217,12 +222,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.827" />
+        app:layout_constraintVertical_bias="0.825" />
 
     <TextView
-        android:id="@+id/capacityNumber"
-        android:layout_width="75dp"
-        android:layout_height="38dp"
+        android:id="@+id/membersNumber"
+        android:layout_width="71dp"
+        android:layout_height="48dp"
         android:background="#F4F4F4"
         android:gravity="center|left"
         android:text="\t\t1"
@@ -234,17 +239,18 @@
         app:layout_constraintVertical_bias="0.888" />
 
     <ImageButton
-        android:id="@+id/increaseCapacityButton"
-        android:layout_width="35dp"
-        android:layout_height="38dp"
+        android:id="@+id/increaseMemberButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="34dp"
         android:background="#F4F4F4"
+        android:onClick="increaseMembers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.253"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883"
+        app:layout_constraintVertical_bias="0.881"
         app:srcCompat="@drawable/vector"
         tools:ignore="SpeakableTextPresentCheck" />
 

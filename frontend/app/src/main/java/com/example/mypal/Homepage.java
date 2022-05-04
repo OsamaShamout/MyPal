@@ -52,7 +52,7 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
     }
 
     public void OnClickOpenActivity(View view){
-        Intent intent = new Intent(this,CreateActivity.class);
+        Intent intent = new Intent(this,ActivitiesPage.class);
         startActivity(intent);
 
     }
