@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.28072916666666664" />
+        <entry key="app/src/main/res/drawable-v24/card_look.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/card_look.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/circular.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/email_2.xml" value="0.1555" />
@@ -14,17 +17,20 @@
         <entry key="app/src/main/res/drawable/lock.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/profile_images.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/ripple.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.17" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.2933258056640625" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.15785813630041726" />
-        <entry key="app/src/main/res/layout/activity_activities_page.xml" value="0.12522033691406248" />
-        <entry key="app/src/main/res/layout/activity_create.xml" value="0.56086668356871" />
+        <entry key="app/src/main/res/layout/activity_activities_page.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_create.xml" value="0.4482758620689655" />
         <entry key="app/src/main/res/layout/activity_favorite_page.xml" value="0.1996481970096746" />
-        <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.24436492919921876" />
+        <entry key="app/src/main/res/layout/activity_homepage_trial.xml" value="0.34030837004405284" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.404126213592233" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.5488733927408854" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2557996933782068" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.325" />
+        <entry key="app/src/main/res/layout/card_look.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/fragment_scrolling.xml" value="0.165" />
         <entry key="app/src/main/res/menu/nav_menu.xml" value="0.25416666666666665" />
       </map>

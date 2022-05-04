@@ -20,6 +20,7 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
         setContentView(R.layout.activity_profile);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavMenu);
+        bottomNavigationView.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
                 startActivity(intent2);
                 break;
             case R.id.profile:
-                Toast.makeText(getApplicationContext(), "You are alrady in profile page.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You are already in profile page.", Toast.LENGTH_SHORT).show();
                 break;
         }
 

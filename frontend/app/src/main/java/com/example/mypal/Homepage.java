@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -13,10 +14,14 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Homepage extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
-    @Override
+    BottomNavigationView bottomNavigationView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavMenu);
+
+        bottomNavigationView.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -25,7 +30,7 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
 
         switch(id){
             case R.id.home:
-                Toast.makeText(getApplicationContext(), "You are alrady in home page.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You are already in home page.", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.favorites:
                 Intent intent = new Intent(this,FavoritePage.class);
@@ -38,5 +43,17 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
         }
 
         return false;
+    }
+
+    public void OnClickCreateNewActivity(View view){
+        Intent intent = new Intent(this,CreateActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void OnClickOpenActivity(View view){
+        Intent intent = new Intent(this,CreateActivity.class);
+        startActivity(intent);
+
     }
 }
