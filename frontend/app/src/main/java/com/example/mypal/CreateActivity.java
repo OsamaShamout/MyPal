@@ -2,6 +2,7 @@ package com.example.mypal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -88,7 +91,9 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
     public void decreaseCapacity(View view) {
         //Ensure no more capacity below 0.
         if(capacity == 1){
-            Toast.makeText(getApplicationContext(),"Cannot make activity with less than 1 member :(\nThink of more friends to come!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Cannot make activity with less than 1 member :(", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Think of more friends to come!", Toast.LENGTH_SHORT).show();
+
             return;
         }
         else{
@@ -103,6 +108,7 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
     String activity_date_string;
     String activity_tag_string;
     String activity_capacity_string;
+    @SuppressLint("LongLogTag")
     public void onClickRegisterActivity(View view){
 
         //Obtain all information to register activity
@@ -119,13 +125,77 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
         }
 
         //Make sure a valid date is input.
-        Pattern p = Pattern.compile("(0[1-9]|[12][0-9]|[3][01])([/.\\-])(0[1-9]|1[0-2])(\\2)2022");
+        Pattern p = Pattern.compile("((0[1-9]|[12][0-9]|[3][01])([/.\\-])(0[1-9]|1[0-2])(\\3)(20\\d\\d))");
         Matcher m = p.matcher(activity_date_string);
 
-        
+        //Format provided date to give out standardized input to DB.
+        String day;
+        String month;
+        String year = "";
+
+        Calendar right_now = Calendar.getInstance();
+        int current_year = right_now.get(Calendar.YEAR);
+        int current_month = right_now.get(Calendar.MONTH);
+        int current_day = right_now.get(Calendar.DAY_OF_MONTH);
+
+        //Adjust month with a plus 1
+        current_month++;
+
+        Log.e("The current time is: ", current_day + "-" + current_month + "-" + current_year);
+
+        Log.e("This year is: " , String.valueOf(current_year));
+
+        if(m.matches()) {
+            day = m.group(2);
+            month = m.group(4);
+            year = m.group(6);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Please enter a valid date.\nDD/MM/YYYY", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Log.e("Year from pattern: ", year);
+        //Check that the event is scheduled this year.
+
+        Log.e("Year:", year);
+        Log.e("Month:", month);
+        Log.e("Day:", day);
+
+        //Handle Errors from Input
+        if(Integer.parseInt(year) > current_year){
+            Toast.makeText(getApplicationContext(), "Activity has to be scheduled within the year " + current_year, Toast.LENGTH_SHORT).show();
+            return;
+        } else if (Integer.parseInt(year) < current_year){
+            Toast.makeText(getApplicationContext(), "Activity cannot be created in previous years", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(Integer.parseInt(day) == current_day && Integer.parseInt(month) == current_month){
+            Toast.makeText(getApplicationContext(), "Activity cannot be created today", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(Integer.parseInt(month) < current_month){
+            Toast.makeText(getApplicationContext(), "Activity cannot be created in the past months.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(Integer.parseInt(day) < current_day){
+            Toast.makeText(getApplicationContext(), "Activity cannot be created in the past days.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //Send Input to DB.
 
 
 
+
+
+
+
+        activity_date_string = day + "/" + month + "/" + year;
+        Log.e("Date from pattern: ", activity_date_string);
 
         //Obtain Activity Tag
         AdapterView<?> parent = spinner_list;
