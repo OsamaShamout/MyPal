@@ -32,15 +32,11 @@ $db_password = mysqli_fetch_array($password_query->get_result());
 $db_pass = $db_password["password"];
 
 
-//DB Password Hashed
-$user_hashed_db = hash("SHA256", $db_pass);
-
-
 //Hash Front-End Password for Comparison
 $user_hashed_fe = hash("SHA256", $password);
 
 
-if($user_hashed_fe == $user_hashed_db){
+if($user_hashed_fe == $db_pass){
     echo "Password match";
 }
 else{

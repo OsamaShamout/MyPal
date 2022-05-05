@@ -158,8 +158,11 @@ public class Registration extends AppCompatActivity {
 
             return;
         }
-        
 
+
+        SendSignUptoDB sign_up = new SendSignUptoDB();
+        String url2 = "https://mcprojs.000webhostapp.com/backend/sign_up.php";
+        sign_up.execute(url2);
 
     }
 
@@ -169,7 +172,7 @@ public class Registration extends AppCompatActivity {
 
     String verification;
     //Register User API
-    public class SendLogInToDB extends AsyncTask<String, Void, String> {
+    public class SendSignUptoDB extends AsyncTask<String, Void, String> {
         protected String doInBackground(String... urls) {
 
 
@@ -267,16 +270,12 @@ public class Registration extends AppCompatActivity {
             super.onPostExecute(s);
             try {
                 Log.e("TAG POST:",s);
-                if(s.equalsIgnoreCase("User not registered\n")){
-                    Toast.makeText(getApplicationContext(), "User not registered", Toast.LENGTH_SHORT).show();
+                if(s.equalsIgnoreCase("User already exists\n")){
+                    Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_SHORT).show();
 
-                } else if (s.equalsIgnoreCase("Password mismatch\n")) {
-                    Toast.makeText(getApplicationContext(), "Incorrect Password", Toast.LENGTH_SHORT).show();
-
-                }else if(s.equalsIgnoreCase("Password match\n")){
-                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                } else if (s.equalsIgnoreCase("Success\n")) {
+                    Toast.makeText(getApplicationContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
                     logged_in = true;
-
                     //Validate Information from DB
                     if(logged_in) {
                         Intent intent = new Intent(Registration.this, Homepage.class);

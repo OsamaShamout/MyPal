@@ -23,8 +23,6 @@ if($email_query->get_result()->num_rows==0){
 //Hash password to enter to DB.
 $user_hashed_db = hash("SHA256", $password);
 
-echo $user_hashed_db;
-echo "\n";
 
 //Bind values to object
 $query->bind_param("sssss", $first_name, $last_name, $email, $user_hashed_db, $country);
@@ -34,11 +32,11 @@ $query->execute();
 
 $result = "Success";
 
-echo $success;
+echo $result;
 
    
 }else{
-    $result = "User already exists!";
+    $result = "User already exist";
     echo $result;
     return;
 
