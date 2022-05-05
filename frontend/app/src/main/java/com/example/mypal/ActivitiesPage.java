@@ -105,5 +105,6 @@ public class ActivitiesPage extends AppCompatActivity {
             }
         });
 
+        share.show();
     }
 }

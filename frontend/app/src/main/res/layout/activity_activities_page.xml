@@ -24,9 +24,8 @@
         app:srcCompat="@drawable/subtract"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/registrationButton"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="187dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -86,7 +85,8 @@
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="1dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#F9F9F9"
+        android:onClick="OnClickReturnHomepage"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.167"
         app:srcCompat="@drawable/animal" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/Outdoors"
         android:layout_width="69dp"
         android:layout_height="48dp"

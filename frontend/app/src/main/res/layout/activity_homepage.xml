@@ -48,10 +48,9 @@
                 android:background="@drawable/homescreen_2">
 
                 <ImageButton
-
                     android:id="@+id/logoutButton"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="36dp"
                     android:background="@drawable/ripple"
                     android:backgroundTint="#000A63"
@@ -60,7 +59,7 @@
                     android:onClick="logOut"
                     android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.796"
+                    app:layout_constraintHorizontal_bias="0.956"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/log_out_white"
@@ -98,13 +97,13 @@
                     android:id="@+id/notificationsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="36dp"
                     android:background="@drawable/ripple"
                     android:backgroundTint="#000A63"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.955"
+                    app:layout_constraintHorizontal_bias="0.798"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_alert"
@@ -162,17 +161,10 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-
-                        <FrameLayout
-                            android:id="@+id/frameLayout1"
-                            android:layout_width="220dp"
-                            android:layout_height="196dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/bottomNavMenu"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.225"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.54">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/activityImage1"
@@ -185,17 +177,9 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
-                                app:srcCompat="@drawable/laulib" />
+                                app:srcCompat="@drawable/laulib"
+                                tools:ignore="SpeakableTextPresentCheck" />
 
-                            <LinearLayout
-                                android:id="@+id/linearInFrame1"
-                                android:layout_width="match_parent"
-                                android:layout_height="51dp"
-                                android:layout_gravity="bottom|end"
-                                android:background="#F9F9F9"
-                                android:backgroundTint="#F9F9F9"
-                                android:elevation="0sp"
-                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/activityButton1"
@@ -221,7 +205,6 @@
                                     android:textSize="14sp" />
                             </LinearLayout>
 
-                        </FrameLayout>
 
                         <FrameLayout
                             android:layout_width="220dp"
@@ -390,18 +373,10 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-
-                        <FrameLayout
-                            android:id="@+id/FrameLayout"
-                            android:layout_width="220dp"
-                            android:layout_height="196dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/bottomNavMenu"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.225"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.54">
-
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/activityAroundImage1"
@@ -409,23 +384,12 @@
                                 android:layout_height="142dp"
                                 android:layout_gravity="center|start|top"
 
-
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/laulib" />
-
-                            <LinearLayout
-                                android:id="@+id/linearInAroundFrame1"
-                                android:layout_width="match_parent"
-                                android:layout_height="51dp"
-                                android:layout_gravity="bottom|end"
-                                android:background="#F9F9F9"
-                                android:backgroundTint="#F9F9F9"
-                                android:elevation="0sp"
-                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/activityAroundText1"
@@ -451,18 +415,10 @@
                                     android:textSize="14sp" />
                             </LinearLayout>
 
-                        </FrameLayout>
-
-
-                        <FrameLayout
-                            android:layout_width="220dp"
-                            android:layout_height="196dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/bottomNavMenu"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.225"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.54">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/activityAroundImage2"
@@ -476,15 +432,6 @@
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/laulib" />
 
-                            <LinearLayout
-                                android:id="@+id/linearInAroundFrame2"
-                                android:layout_width="match_parent"
-                                android:layout_height="51dp"
-                                android:layout_gravity="bottom|end"
-                                android:background="#F9F9F9"
-                                android:backgroundTint="#F9F9F9"
-                                android:elevation="0sp"
-                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/activityAroundText2"
@@ -510,17 +457,11 @@
                                     android:textSize="14sp" />
                             </LinearLayout>
 
-                        </FrameLayout>
 
-                        <FrameLayout
-                            android:layout_width="220dp"
-                            android:layout_height="196dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/bottomNavMenu"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.225"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.54">
+                           <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/activityAroundImage3"
@@ -534,15 +475,6 @@
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/laulib" />
 
-                            <LinearLayout
-                                android:id="@+id/linearInAroundFrame3"
-                                android:layout_width="match_parent"
-                                android:layout_height="51dp"
-                                android:layout_gravity="bottom|end"
-                                android:background="#F9F9F9"
-                                android:backgroundTint="#F9F9F9"
-                                android:elevation="0sp"
-                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/activityAroundText3"
@@ -567,7 +499,6 @@
                                     android:textColor="#606065"
                                     android:textSize="14sp" />
                             </LinearLayout>
-                        </FrameLayout>
 
                     </LinearLayout>
 
@@ -581,10 +512,10 @@
                     android:layout_marginBottom="282dp"
                     app:layout_constraintBottom_toBottomOf="@+id/horizontalScrollView2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.886"
+                    app:layout_constraintHorizontal_bias="0.74"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.07999998"
+                    app:layout_constraintVertical_bias="0.100000024"
                     app:srcCompat="@drawable/notification_indicator" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
