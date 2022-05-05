@@ -43,4 +43,8 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
 
         return false;
     }
+
+    public void onClickModifyProfile(View view){
+
+    }
 }

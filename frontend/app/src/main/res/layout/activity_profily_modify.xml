@@ -427,22 +427,24 @@
         app:srcCompat="@drawable/ic_alert"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
+    <EditText
         android:id="@+id/userLocationProfile"
-        android:layout_width="240dp"
-        android:layout_height="30dp"
+        android:layout_width="242dp"
+        android:layout_height="40dp"
         android:layout_marginStart="167dp"
         android:fontFamily="@font/nunito_sans_bold"
         android:gravity="bottom"
-        android:text="Beirut, Lebanon"
+        android:hint="Click to Edit Location"
+        android:inputType="text"
         android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameProfile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameProfilEditText"
+        app:layout_constraintVertical_bias="0.01" />
 
     <com.google.android.material.imageview.ShapeableImageView
 
@@ -465,29 +467,31 @@
         app:strokeColor="@color/white"
         app:strokeWidth="1dp" />
 
-    <TextView
-        android:id="@+id/usernameProfile"
-        android:layout_width="240dp"
-        android:layout_height="30dp"
+    <EditText
+        android:id="@+id/usernameProfilEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_sans_bold"
-        android:text="Osama Shamout"
+        android:hint="Click to Edit Name"
+        android:inputType="text"
         android:textColor="#FFFFFF"
-        android:textSize="26sp"
+        android:textColorHint="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintHorizontal_bias="0.721"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108" />
+        app:layout_constraintVertical_bias="0.084" />
 
     <Button
-        android:id="@+id/editProfileButton"
+        android:id="@+id/finishEditingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#000A63"
         android:fontFamily="@font/nunito_sans"
-        android:onClick="onClickModifyProfile"
-        android:text="Edit Profile"
+        android:onClick="onClickApplyProfileChange"
+        android:text="Finish Editing"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/bottomNavMenu"
         app:layout_constraintEnd_toEndOf="parent"

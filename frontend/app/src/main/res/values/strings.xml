@@ -27,7 +27,6 @@
     <string name="done_copy">Done</string>
 
 
-
     //countries array
     <string-array name="countries_available">
         <item>Choose Country</item>

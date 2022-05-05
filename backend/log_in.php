@@ -17,7 +17,7 @@ $email_query->execute();
 // Check if the user exists through e-mail. (UNIQ).
 if($email_query->get_result()->num_rows==0){
     $result = "User not registered"; 
-    echo $result;
+    echo $result;   
     return;
 }else{
 //Proceed to compare with password
@@ -27,6 +27,8 @@ $password_query->bind_param("s",$email);
 $password_query->execute();
 }
 
+
+$user_id = $db_password["password"];
 
 //DB password is stored as a hashed password.
 $db_password = mysqli_fetch_array($password_query->get_result());
@@ -48,6 +50,7 @@ if($user_hashed_fe == $db_pass){
     $user_id = $db_userid["user_id"];
 
     echo "Password match";
+    echo "_";
     echo $user_id;
 }
 else{
