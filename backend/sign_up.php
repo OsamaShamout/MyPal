@@ -18,49 +18,31 @@ $email_query->execute();
 
 // Check if the user exists through e-mail. (UNIQ).
 if($email_query->get_result()->num_rows==0){
-    $result = "User not registered"; 
-    echo $result;
-    return;
-}else{
-//Prepare query to insert into DB "?" to avoid SQL injections
-$query = $mysqli->prepare("INSERT INTO registered_user (first_name, last_name, email, password, country) VALUES (?, ?, ?, ?, ?);");
+  $query = $mysqli->prepare("INSERT INTO registered_user (first_name, last_name, email, password, country) VALUES (?, ?, ?, ?, ?);");   //Prepare query to insert into DB "?" to avoid SQL injections
 
 //Hash password to enter to DB.
 $user_hashed_db = hash("SHA256", $password);
 
 echo $user_hashed_db;
+echo "\n";
 
 //Bind values to object
-$query->bind_param("sssss", $first_name, $last_name, $email, $password, $country);
+$query->bind_param("sssss", $first_name, $last_name, $email, $user_hashed_db, $country);
 
 //Perform query
 $query->execute();
 
+$result = "Success";
+
+echo $success;
+
+   
+}else{
+    $result = "User already exists!";
+    echo $result;
+    return;
+
 }
-
-//DB password is stored as a hashed password.
-$db_password = mysqli_fetch_array($password_query->get_result());
-$db_pass = $db_password["password"];
-
-
-
-
-
-//Hash Front-End Password for Comparison
-$user_hashed_fe = hash("SHA256", $password);
-
-
-if($user_hashed_fe == $user_hashed_db){
-    echo "Password match";
-}
-else{
-    echo "Password mismatch";
-}
-    
-
-
-
-
 
 
 ?>
