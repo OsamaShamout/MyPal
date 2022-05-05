@@ -36,7 +36,7 @@ $db_password = mysqli_fetch_array($password_query->get_result());
 $db_pass = $db_password["password"];
 
 //db_password
-echo $db_pass;
+echo $db_pass;  
 echo "\n";
 
 //DB Password Hashed

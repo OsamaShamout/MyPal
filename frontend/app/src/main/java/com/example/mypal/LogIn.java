@@ -28,10 +28,14 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.net.ssl.HttpsURLConnection;
 
 public class LogIn extends AppCompatActivity {
+
+    boolean logged_in = false;
 
     EditText input_email;
     EditText input_password;
@@ -62,13 +66,25 @@ public class LogIn extends AppCompatActivity {
         startActivity(intent);
     }
 
-    boolean logged_in = false;
+
     String verification;
     public void OnClickLogIn(View view){
 
-        Intent intent = new Intent(this,Homepage.class);
-        startActivity(intent);
+        email_string = input_email.getText().toString();
+        password_string = input_password.getText().toString();
 
+        //Ensure a valid email is input.
+        Pattern p1 = Pattern.compile("(^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$)");
+        Matcher m1 = p1.matcher(email_string);
+
+        if (m1.matches()) {
+            email_string = m1.group(1);
+        } else {
+            Toast.makeText(getApplicationContext(), "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //Check if e-mail exists in database.
         String url1 = "https://mcprojs.000webhostapp.com/backend/log_in.php";
 
         //Perform to insert queries to DB.
@@ -77,6 +93,10 @@ public class LogIn extends AppCompatActivity {
 
         //Validate Information from DB
         logged_in = false;
+        if(logged_in) {
+            Intent intent = new Intent(this, Homepage.class);
+            startActivity(intent);
+        }
         //If true save e-mail to sharefpref.
 
     }
@@ -88,12 +108,10 @@ public class LogIn extends AppCompatActivity {
     //Send data to DB.
     String email_string;
     String password_string;
-    String result_db1;
     public class SendLogInToDB extends AsyncTask<String, Void, String> {
         protected String doInBackground(String... urls) {
 
-            email_string = input_email.getText().toString();
-            password_string = input_password.getText().toString();
+
 
             //Variables to initiate connection.
             URL url;
@@ -167,11 +185,8 @@ public class LogIn extends AppCompatActivity {
 
                 verification = total.toString();
 
-
                 //Log server return.
-                Log.e("test", "result from server: " + result_db1);
-
-
+                Log.e("test", "result from server: " + verification);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -179,7 +194,7 @@ public class LogIn extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return result_db1;
+            return verification;
 
         }
 
@@ -187,7 +202,7 @@ public class LogIn extends AppCompatActivity {
         protected void onPostExecute(String s){
             super.onPostExecute(s);
             try {
-                Log.e("Tag", s);
+                Log.e("TAG POST:", s);
             }
             catch (Exception e){
                 e.printStackTrace();
