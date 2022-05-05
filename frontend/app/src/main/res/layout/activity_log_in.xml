@@ -29,7 +29,7 @@
         android:id="@+id/loginButton"
         android:layout_width="306dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="128dp"
         android:background="@drawable/ripple"
         android:fontFamily="@font/roboto_bold"
         android:onClick="OnClickLogIn"
@@ -42,10 +42,26 @@
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeAnim"
         app:layout_constraintVertical_bias="0.553" />
+
+    <Button
+        android:id="@+id/alternativeRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#0FFFFFFF"
+        android:onClick="OnClickGoToRegistration"
+        android:text="@string/alternative_log_in_reg"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888" />
 
     <TextView
         android:id="@+id/passwordTextView"
@@ -85,21 +101,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.629" />
-
-    <Button
-        android:id="@+id/alternativeRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#0FFFFFFF"
-        android:onClick="OnClickGoToRegistration"
-        android:text="@string/alternative_log_in_reg"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.827" />
 
     <ImageView
         android:id="@+id/passwordImage"
@@ -197,5 +198,20 @@
         app:layout_constraintVertical_bias="0.022"
         app:srcCompat="@drawable/left_arrow"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/alertMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:textAlignment="center"
+        android:textColor="#E53935"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

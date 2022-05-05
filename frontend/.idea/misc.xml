@@ -29,7 +29,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.5488733927408854" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2557996933782068" />
-        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.5875420875420876" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.25" />
         <entry key="app/src/main/res/layout/card_look.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/fragment_scrolling.xml" value="0.165" />
         <entry key="app/src/main/res/layout/spinner_style.xml" value="0.1609375" />
