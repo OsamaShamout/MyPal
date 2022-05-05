@@ -8,10 +8,6 @@ $email = $_POST["email"];
 $password = $_POST["password"];
 $user_id = 0;
 
-echo $email;
-echo "\n";
-echo $password;
-echo "\n";
 
 //Prepare Query to Obtain Email from DB.
 $email_query = $mysqli->prepare("SELECT email FROM registered_user WHERE email=?");
@@ -22,7 +18,7 @@ $email_query->execute();
 if($email_query->get_result()->num_rows==0){
     $result = "User not registered"; 
     echo $result;
-    echo "\n";
+    return;
 }else{
 //Proceed to compare with password
 //Prepare Query to Obtain Password from DB.
@@ -35,25 +31,14 @@ $password_query->execute();
 $db_password = mysqli_fetch_array($password_query->get_result());
 $db_pass = $db_password["password"];
 
-//db_password
-echo $db_pass;  
-echo "\n";
 
 //DB Password Hashed
 $user_hashed_db = hash("SHA256", $db_pass);
-echo $user_hashed_db;
-echo "\n";
+
 
 //Hash Front-End Password for Comparison
 $user_hashed_fe = hash("SHA256", $password);
 
-
-//hashed front-end password
-//hash [1-6]
-echo $user_hashed_fe;
-echo "\n";
-
-echo $password;
 
 if($user_hashed_fe == $user_hashed_db){
     echo "Password match";

@@ -81,23 +81,19 @@ public class LogIn extends AppCompatActivity {
             email_string = m1.group(1);
         } else {
             Toast.makeText(getApplicationContext(), "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+            dialogue.setText("Please enter a valid email address.");
             return;
         }
 
         //Check if e-mail exists in database.
+        //Check if passwords match.
         String url1 = "https://mcprojs.000webhostapp.com/backend/log_in.php";
 
-        //Perform to insert queries to DB.
+
+        //Perform to check conditions
+        //Upon success page intent to HomePage (from method).
         SendLogInToDB task1 = new SendLogInToDB();
         task1.execute(url1);
-
-        //Validate Information from DB
-        logged_in = false;
-        if(logged_in) {
-            Intent intent = new Intent(this, Homepage.class);
-            startActivity(intent);
-        }
-        //If true save e-mail to sharefpref.
 
     }
 
@@ -105,7 +101,7 @@ public class LogIn extends AppCompatActivity {
     //                                          APIs
     //                  ---------------------------------------------------
 
-    //Send data to DB.
+    //Send data to Log In.
     String email_string;
     String password_string;
     public class SendLogInToDB extends AsyncTask<String, Void, String> {
@@ -202,7 +198,26 @@ public class LogIn extends AppCompatActivity {
         protected void onPostExecute(String s){
             super.onPostExecute(s);
             try {
-                Log.e("TAG POST:", s);
+                Log.e("TAG POST:",s);
+                if(s.equalsIgnoreCase("User not registered\n")){
+                    Toast.makeText(getApplicationContext(), "User not registered", Toast.LENGTH_SHORT).show();
+                    dialogue.setText("User not registerd");
+                } else if (s.equalsIgnoreCase("Password mismatch\n")) {
+                    Toast.makeText(getApplicationContext(), "Incorrect Password", Toast.LENGTH_SHORT).show();
+                    dialogue.setText("Incorrect Password");
+                }else if(s.equalsIgnoreCase("Password match\n")){
+                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                    logged_in = true;
+
+                    //Validate Information from DB
+                    if(logged_in) {
+                        Intent intent = new Intent(LogIn.this, Homepage.class);
+                        startActivity(intent);
+                    }
+                }
+
+
+
             }
             catch (Exception e){
                 e.printStackTrace();
