@@ -98,7 +98,7 @@ public class LogIn extends AppCompatActivity {
     }
 
     //                  ---------------------------------------------------
-    //                                          APIs
+    //                                      APIs Log In
     //                  ---------------------------------------------------
 
     //Send data to Log In.

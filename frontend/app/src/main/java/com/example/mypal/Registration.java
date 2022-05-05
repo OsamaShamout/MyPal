@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +46,8 @@ public class Registration extends AppCompatActivity {
 
     Button register;
 
+    Boolean logged_in = false;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
@@ -63,8 +67,6 @@ public class Registration extends AppCompatActivity {
         Intent intent = new Intent(this, LogIn.class);
         startActivity(intent);
     }
-
-    boolean signed_up = false;
 
     String first_name_string;
     String last_name_string;
@@ -103,60 +105,74 @@ public class Registration extends AppCompatActivity {
             return;
         }
 
-        //Check if e-mail exists in database.
+        //Validate Password
+        password_string = password.getText().toString();
+        repeat_password_string = repeat_password.getText().toString();
 
-
+        //Check if password input.
         if(password_string.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter a password.", Toast.LENGTH_SHORT).show();
             return;
         }
-        //Ensure a valid password is input.
-        Pattern p2 = Pattern.compile("(^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,30}$)");
-        Matcher m2 = p2.matcher(password_string);
-
-        if (m2.matches()) {
-            password_string = m2.group(1);
-        } else {
-            AlertDialog password_alert = new AlertDialog.Builder(Registration.this).create();
-            password_alert.setTitle("Password Checker has to have:");
-            password_alert.setTitle("1. Minimum eight characters\n2. At least one uppercase letter\n3. One lowercase letter\n4. One number\n5. One special character");
-            password_alert.setButton(AlertDialog.BUTTON_POSITIVE, "Done", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
+        //Check if repeat password is input.
+        if(repeat_password_string.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter repeat password.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         //Ensure repeated password is the same as previous password.
         if (!password_string.equals(repeat_password_string)) {
             Toast.makeText(getApplicationContext(), "Passwords do not match.", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        password_string = password.getText().toString();
-        repeat_password_string = repeat_password.getText().toString();
+        //Application focused on MENA region countries but I will not check for that at log in
+        //to attract as many users from all around the world then determine the task moving forward.
+
+        //Check Country
         country_string = country.getText().toString();
-
-
-        //Send to DB
-
-
-        //If success pass user to logged in page.
-
-        signed_up = true;
-
-        if (signed_up) {
-            Intent intent = new Intent(this, Homepage.class);
-            startActivity(intent);
+        if(country_string.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter a country.", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        //Ensure a valid password is input.
+        Pattern p2 = Pattern.compile("((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d$@$_.!%*?&]{8,30})");
+        Matcher m2 = p2.matcher(password_string);
+
+        if (m2.matches()) {
+            password_string = m2.group(1);
+        } else {
+          ;
+            AlertDialog password_alert = new AlertDialog.Builder(Registration.this).create();
+            password_alert.setTitle("Password has to have:");
+            password_alert.setMessage("1. Minimum eight characters\n2. At least one uppercase letter\n3. One lowercase lette\n4. One number\n5. One special character\n6. Maximum 30 characters");
+            password_alert.setButton(AlertDialog.BUTTON_POSITIVE, "Done", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+
+            password_alert.show();
+
+            return;
+        }
+        
+
+
     }
 
-    //Send data to DB.
-    String result_db2;
+    //                  ---------------------------------------------------
+    //                                      APIs Log In
+    //                  ---------------------------------------------------
 
-    public class CheckEmail extends AsyncTask<String, Void, String> {
+    String verification;
+    //Register User API
+    public class SendLogInToDB extends AsyncTask<String, Void, String> {
         protected String doInBackground(String... urls) {
+
+
 
             //Variables to initiate connection.
             URL url;
@@ -181,7 +197,11 @@ public class Registration extends AppCompatActivity {
                 StringBuffer packedData = new StringBuffer();
 
                 //Send the variables to their respective $_POST.
+                jo.put("first_name", first_name_string);
+                jo.put("last_name", last_name_string);
                 jo.put("email", email_string);
+                jo.put("password", password_string);
+                jo.put("country", country_string);
 
                 //Pack data to be processed by PHP for $_POST.
                 boolean firstValue = true;
@@ -227,12 +247,10 @@ public class Registration extends AppCompatActivity {
                 }
                 Log.e("Tag", "Server Response is:" + total.toString() + ": " + serverResponseMessage + "\nResponse Code is: " + serverResponseCode);
 
-                String verification = total.toString();
-
+                verification = total.toString();
 
                 //Log server return.
-                Log.e("test", "result from server: " + result_db2);
-
+                Log.e("test", "result from server: " + verification);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -240,29 +258,39 @@ public class Registration extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return result_db2;
+            return verification;
 
         }
 
-        String email;
-        protected void onPostExecute(String s) {
+
+        protected void onPostExecute(String s){
             super.onPostExecute(s);
-                try {
-                    //Convert JSON objects into Strings.
-                    JSONArray json_arr = new JSONArray(s);
+            try {
+                Log.e("TAG POST:",s);
+                if(s.equalsIgnoreCase("User not registered\n")){
+                    Toast.makeText(getApplicationContext(), "User not registered", Toast.LENGTH_SHORT).show();
 
-                    JSONObject jsonObject = json_arr.getJSONObject(0);
+                } else if (s.equalsIgnoreCase("Password mismatch\n")) {
+                    Toast.makeText(getApplicationContext(), "Incorrect Password", Toast.LENGTH_SHORT).show();
 
-                    email = jsonObject.getString("email");
+                }else if(s.equalsIgnoreCase("Password match\n")){
+                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                    logged_in = true;
 
-                    Log.e("Tag email from server:" , email);
-
-                    Toast.makeText(getApplicationContext(), email, Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Error in receiving data.", Toast.LENGTH_LONG).show();
+                    //Validate Information from DB
+                    if(logged_in) {
+                        Intent intent = new Intent(Registration.this, Homepage.class);
+                        startActivity(intent);
+                    }
                 }
 
+
+
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Error in receiving data.", Toast.LENGTH_LONG).show();
+            }
 
         }
     }
