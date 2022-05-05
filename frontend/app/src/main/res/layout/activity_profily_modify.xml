@@ -7,6 +7,25 @@
     android:background="@drawable/profile_background"
     tools:context=".Profile">
 
+    <EditText
+        android:id="@+id/userEmailEditText"
+        android:layout_width="242dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="167dp"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:gravity="bottom"
+        android:hint="Click to Edit Email"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameProfilEditText"
+        app:layout_constraintVertical_bias="0.076" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavMenu"
         android:layout_width="410dp"
@@ -495,9 +514,9 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/bottomNavMenu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228" />
+        app:layout_constraintVertical_bias="0.3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

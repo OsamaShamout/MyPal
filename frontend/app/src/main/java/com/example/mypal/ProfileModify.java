@@ -34,6 +34,7 @@ public class ProfileModify extends AppCompatActivity {
 
     EditText name_input;
     EditText location_input;
+    EditText email_input;
 
     String user_id;
 
@@ -44,39 +45,66 @@ public class ProfileModify extends AppCompatActivity {
 
         name_input = (EditText) findViewById(R.id.usernameProfilEditText);
         location_input = (EditText) findViewById(R.id.userLocationProfile);
+        email_input = (EditText) findViewById(R.id.userEmailEditText);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         user_id = preferences.getString("user_id", "");
     }
 
     String  name_input_string;
     String location_input_string;
+    String email_input_string;
 
     String first_name;
     String last_name;
+
+    boolean name_given;
+    boolean location_given;
+    boolean email_given;
     public void onClickApplyProfileChange(View view){
 
         name_input_string = name_input.getText().toString();
         location_input_string = location_input.getText().toString();
+        email_input_string = email_input.getText().toString();
 
-        //Ensure a valid name is inputted correctly.
-        Pattern p1 = Pattern.compile("^((\\w)+) ((\\w)+$)");
-        Matcher m1 = p1.matcher(name_input_string);
+        if(!name_input_string.isEmpty()) {
+            name_given = true;
+            //Ensure a valid name is inputted correctly.
+            Pattern p1 = Pattern.compile("^((\\w)+) ((\\w)+$)");
+            Matcher m1 = p1.matcher(name_input_string);
 
-        //From captured string
-        if (m1.matches()) {
-            first_name = m1.group(1);
-            last_name = m1.group(3);
-        } else {
-            Toast.makeText(getApplicationContext(), "Name formatting is: First-name Last-Name", Toast.LENGTH_SHORT).show();
+            //From captured string
+            if (m1.matches()) {
+                first_name = m1.group(1);
+                last_name = m1.group(3);
+            } else {
+                Toast.makeText(getApplicationContext(), "Name formatting is: First-name Last-Name", Toast.LENGTH_SHORT).show();
+            }
         }
 
-        //Ensure a valid country is inputted correctly.
-        Pattern p2 = Pattern.compile("^((\\w)+)$");
-        Matcher m2 = p2.matcher(name_input_string);
-        if (m2.matches()) {
-            location_input_string = m2.group(1);
-        } else {
-            Toast.makeText(getApplicationContext(), "Please input one word country.", Toast.LENGTH_SHORT).show();
+        if(location_input_string.isEmpty()) {
+            location_given = true;
+            //Ensure a valid country is inputted correctly.
+            Pattern p2 = Pattern.compile("^((\\w)+)$");
+            Matcher m2 = p2.matcher(location_input_string);
+            if (m2.matches()) {
+                location_input_string = m2.group(1);
+            } else {
+                Toast.makeText(getApplicationContext(), "Please input one word country.", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(!email_input_string.isEmpty()){
+            email_given = true;
+            //Ensure a valid email is input.
+            Pattern p1 = Pattern.compile("(^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$)");
+            Matcher m1 = p1.matcher(email_input_string);
+
+            if (m1.matches()) {
+                email_input_string = m1.group(1);
+            } else {
+                Toast.makeText(getApplicationContext(), "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
         String url = "https://mcprojs.000webhostapp.com/backend/modify_profile.php";
@@ -115,9 +143,15 @@ public class ProfileModify extends AppCompatActivity {
                 StringBuffer packedData = new StringBuffer();
 
                 //Send the variables to their respective $_POST.
-                jo.put("first_name", first_name);
-                jo.put("last_name", last_name);
-                jo.put("location", location_input_string);
+                if(email_given){
+                    jo.put("email", email_input_string);
+                }
+                else if(name_given){
+                    jo.put("first_name", first_name);
+                    jo.put("last_name", last_name);
+                } else if (location_given) {
+                    jo.put("location", location_input_string);
+                }
                 jo.put("user_id", user_id);
 
                 //Pack data to be processed by PHP for $_POST.
