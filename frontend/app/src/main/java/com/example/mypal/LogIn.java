@@ -66,16 +66,13 @@ public class LogIn extends AppCompatActivity {
     String verification;
     public void OnClickLogIn(View view){
 
-        String url1 = "https://mcprojs.000webhostapp.com/backend/testt.php";
+        String url1 = "https://mcprojs.000webhostapp.com/backend/log_in.php";
 
         //Perform to insert queries to DB.
         SendLogInToDB task1 = new SendLogInToDB();
         task1.execute(url1);
 
-
-
         //Validate Information from DB
-
         logged_in = false;
         //If true save e-mail to sharefpref.
 
@@ -171,12 +168,7 @@ public class LogIn extends AppCompatActivity {
                 Log.e("Tag", "Server Response is:" + total.toString() + ": " + serverResponseMessage + "\nResponse Code is: " + serverResponseCode);
 
                 verification = total.toString();
-
-                if (verification.equalsIgnoreCase("email not found")) {
-                    Log.e("Tag access", "true");
-                    dialogue.setText(verification);
-                }
-
+                
 
                 //Log server return.
                 Log.e("test", "result from server: " + result_db1);
@@ -197,7 +189,7 @@ public class LogIn extends AppCompatActivity {
         protected void onPostExecute(String s){
             super.onPostExecute(s);
             try {
-
+                Log.e("Tag", s);
             }
             catch (Exception e){
                 e.printStackTrace();

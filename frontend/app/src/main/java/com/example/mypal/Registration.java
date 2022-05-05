@@ -89,6 +89,7 @@ public class Registration extends AppCompatActivity {
         }
 
 
+
         //Validate information
         email_string = email.getText().toString();
         //Ensure a valid email is input.
