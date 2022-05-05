@@ -318,8 +318,8 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
                 jo.put("name", activity_name_string);
                 jo.put("description", activity_description_string);
                 jo.put("location", activity_location_string);
-                jo.put("date", activity_date_string);
                 jo.put("capacity", capacity);
+                jo.put("date", activity_date_string);
                 jo.put("tag", activity_tag_string);
                 jo.put("user_id", user_id);
 
@@ -386,18 +386,16 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
             super.onPostExecute(s);
             try {
                 Log.e("TAG POST:",s);
-//                if(s.equalsIgnoreCase("User already exists\n")){
-//                    Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_SHORT).show();
-//
-//                } else if (s.equalsIgnoreCase("Success\n")) {
-//                    Toast.makeText(getApplicationContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
-//                    logged_in = true;
-//                    //Validate Information from DB
-//                    if(logged_in) {
-//                        Intent intent = new Intent(CreateActivity.this, Homepage.class);
-//                        startActivity(intent);
-//                    }
-//                }
+                if(s.equalsIgnoreCase("Success\n")){
+                    Toast.makeText(getApplicationContext(), "Activity Created Successfully", Toast.LENGTH_SHORT).show();
+                    logged_in = true;
+                    //Validate Information from DB
+                    if(logged_in) {
+                        Intent intent = new Intent(CreateActivity.this, Homepage.class);
+                        startActivity(intent);
+                    }
+
+                }
 
 
 
