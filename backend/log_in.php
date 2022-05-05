@@ -27,6 +27,7 @@ $password_query->bind_param("s",$email);
 $password_query->execute();
 }
 
+
 //DB password is stored as a hashed password.
 $db_password = mysqli_fetch_array($password_query->get_result());
 $db_pass = $db_password["password"];
@@ -37,7 +38,17 @@ $user_hashed_fe = hash("SHA256", $password);
 
 
 if($user_hashed_fe == $db_pass){
+    //Prepare Query to Obtain User_ID from DB.
+    $userid_query = $mysqli->prepare("SELECT user_id FROM registered_user WHERE email=?");
+    $userid_query->bind_param("s",$email);
+    $userid_query->execute();
+
+    //DB pasuser_id retrieved for sharedPref
+    $db_userid = mysqli_fetch_array($userid_query->get_result());
+    $user_id = $db_userid["user_id"];
+
     echo "Password match";
+    echo $user_id;
 }
 else{
     echo "Password mismatch";

@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -270,16 +272,32 @@ public class Registration extends AppCompatActivity {
             super.onPostExecute(s);
             try {
                 Log.e("TAG POST:",s);
-                if(s.equalsIgnoreCase("User already exists\n")){
+                if(s.equalsIgnoreCase("User already exist\n")){
                     Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_SHORT).show();
 
-                } else if (s.equalsIgnoreCase("Success\n")) {
-                    Toast.makeText(getApplicationContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
-                    logged_in = true;
-                    //Validate Information from DB
-                    if(logged_in) {
-                        Intent intent = new Intent(Registration.this, Homepage.class);
-                        startActivity(intent);
+                } else {
+                    String[] split_values = s.split("_");
+                    Log.e("Split return", split_values[0]);
+                    Log.e("Split user_id", split_values[1]);
+                    //  user_id = Integer.parseInt(split_values[1].toString());
+                    String returned_statement = split_values[0];
+                    if(returned_statement.equalsIgnoreCase("Success")) {
+                        Toast.makeText(getApplicationContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
+
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Registration.this);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("user_id", split_values[1]);
+                        editor.apply();
+
+                        logged_in = true;
+
+                        editor.putBoolean("satus", logged_in);
+
+                        //Validate Information from DB
+                        if (logged_in) {
+                            Intent intent = new Intent(Registration.this, Homepage.class);
+                            startActivity(intent);
+                        }
                     }
                 }
 

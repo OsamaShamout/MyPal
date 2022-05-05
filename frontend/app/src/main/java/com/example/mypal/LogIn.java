@@ -1,11 +1,13 @@
 package com.example.mypal;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +30,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,7 +47,9 @@ public class LogIn extends AppCompatActivity {
 
     Button log_in;
 
-    SharedPreferences sharedpref;
+    int user_id;
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,22 +205,42 @@ public class LogIn extends AppCompatActivity {
             super.onPostExecute(s);
             try {
                 Log.e("TAG POST:",s);
+
                 if(s.equalsIgnoreCase("User not registered\n")){
                     Toast.makeText(getApplicationContext(), "User not registered", Toast.LENGTH_SHORT).show();
                     dialogue.setText("User not registerd");
-                } else if (s.equalsIgnoreCase("Password mismatch\n")) {
-                    Toast.makeText(getApplicationContext(), "Incorrect Password", Toast.LENGTH_SHORT).show();
-                    dialogue.setText("Incorrect Password");
-                }else if(s.equalsIgnoreCase("Password match\n")){
-                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-                    logged_in = true;
+                }else{
+                    String[] split_values = s.split("_");
+                    Log.e("Split return", split_values[0]);
+                    Log.e("Split user_id", split_values[1]);
+                    //  user_id = Integer.parseInt(split_values[1].toString());
+                    String returned_statement = split_values[0];
 
-                    //Validate Information from DB
-                    if(logged_in) {
-                        Intent intent = new Intent(LogIn.this, Homepage.class);
-                        startActivity(intent);
+                    if (returned_statement.equalsIgnoreCase("Password mismatch")) {
+                        Toast.makeText(getApplicationContext(), "Incorrect Password", Toast.LENGTH_SHORT).show();
+                        dialogue.setText("Incorrect Password");
+                    }else if(returned_statement.equalsIgnoreCase("Password match")){
+                        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+
+                        logged_in = true;
+                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(LogIn.this);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("user_id",split_values[1]);
+                        editor.apply();
+
+                        //Validate Information from DB
+                        if(logged_in) {
+                            Intent intent = new Intent(LogIn.this, Homepage.class);
+                            startActivity(intent);
+                        }
                     }
+
                 }
+
+
+
+
+
 
 
 

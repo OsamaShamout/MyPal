@@ -30,10 +30,20 @@ $query->bind_param("sssss", $first_name, $last_name, $email, $user_hashed_db, $c
 //Perform query
 $query->execute();
 
+//Prepare Query to Obtain Created user_id from DB.
+$user_id_query = $mysqli->prepare("SELECT user_id FROM registered_user WHERE email=?");
+$user_id_query->bind_param("s",$email);
+$user_id_query->execute();
+
+//DB pasuser_id retrieved for sharedPref
+$db_userid = mysqli_fetch_array($user_id_query->get_result());
+$user_id = $db_userid["user_id"];
+
 $result = "Success";
 
 echo $result;
-
+echo "_";
+echo $user_id;
    
 }else{
     $result = "User already exist";
