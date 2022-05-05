@@ -46,7 +46,7 @@ public class LogIn extends AppCompatActivity {
         email_string = input_email.getText().toString();
         password_string = input_password.getText().toString();
 
-        
+
 
         //Validate Information from DB
 
