@@ -279,7 +279,8 @@ public class Registration extends AppCompatActivity {
                     String[] split_values = s.split("_");
                     Log.e("Split return", split_values[0]);
                     Log.e("Split user_id", split_values[1]);
-                    //  user_id = Integer.parseInt(split_values[1].toString());
+                    Log.e("Split name", split_values[2]);
+
                     String returned_statement = split_values[0];
                     if(returned_statement.equalsIgnoreCase("Success")) {
                         Toast.makeText(getApplicationContext(), "Successfully registered", Toast.LENGTH_SHORT).show();
@@ -287,6 +288,7 @@ public class Registration extends AppCompatActivity {
                         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(Registration.this);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("user_id", split_values[1]);
+                        editor.putString("name",split_values[2]);
                         editor.apply();
 
                         logged_in = true;

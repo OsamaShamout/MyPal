@@ -11,6 +11,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,6 +20,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,6 +38,8 @@ import javax.net.ssl.HttpsURLConnection;
 public class Profile extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
     String user_id;
+    TextView user_name;
+    TextView user_location;
     BottomNavigationView bottomNavigationView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +48,16 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavMenu);
         bottomNavigationView.setOnItemSelectedListener(this);
 
-        GetProfileInformation task = new GetProfileInformation();
+        user_name = (TextView) findViewById(R.id.usernameProfile);
+        user_location = (TextView) findViewById(R.id.userLocationProfile);
+
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         user_id = preferences.getString("user_id", "");
 
+        String url = "https://mcprojs.000webhostapp.com/backend/fetch_profile.php";
+        GetProfileInformation task = new GetProfileInformation();
+        task.execute(url);
     }
 
     @Override
@@ -75,7 +85,7 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
         Intent intent = new Intent(this, ProfileModify.class);
         startActivity(intent);
     }
-
+    String verification;
     public class GetProfileInformation extends AsyncTask<String, Void, String> {
         protected String doInBackground(String... urls) {
 
@@ -167,44 +177,12 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
         protected void onPostExecute(String s){
             super.onPostExecute(s);
             try {
-                Log.e("TAG POST:",s);
+               Log.e("TAG EXEC:", s);
 
-                if(s.equalsIgnoreCase("User not registered\n")){
-                    Toast.makeText(getApplicationContext(), "User not registered", Toast.LENGTH_SHORT).show();
-                    dialogue.setText("User not registerd");
-                }else{
-                    String[] split_values = s.split("_");
-                    Log.e("Split return", split_values[0]);
-                    Log.e("Split user_id", split_values[1]);
-                    //  user_id = Integer.parseInt(split_values[1].toString());
-                    String returned_statement = split_values[0];
+               String[] splitted = s.split("_");
 
-                    if (returned_statement.equalsIgnoreCase("Password mismatch")) {
-                        Toast.makeText(getApplicationContext(), "Incorrect Password", Toast.LENGTH_SHORT).show();
-                        dialogue.setText("Incorrect Password");
-                    }else if(returned_statement.equalsIgnoreCase("Password match")){
-                        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-
-                        logged_in = true;
-                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(LogIn.this);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("user_id",split_values[1]);
-                        editor.apply();
-
-                        //Validate Information from DB
-                        if(logged_in) {
-                            Intent intent = new Intent(LogIn.this, Homepage.class);
-                            startActivity(intent);
-                        }
-                    }
-
-                }
-
-
-
-
-
-
+               user_name.setText(splitted[0]);
+               user_location.setText(splitted[1]);
 
 
             }

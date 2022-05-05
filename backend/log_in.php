@@ -49,9 +49,24 @@ if($user_hashed_fe == $db_pass){
     $db_userid = mysqli_fetch_array($userid_query->get_result());
     $user_id = $db_userid["user_id"];
 
+
+    //Prepare Query to Obtain Name from DB.
+    $name_query = $mysqli->prepare("SELECT CONCAT(first_name , ' ' , last_name) AS Name FROM registered_user WHERE user_id=?");
+    $name_query->bind_param("i",$user_id);
+    $name_query->execute();
+
+    //DB Full Name from UserID.
+    $full_name = mysqli_fetch_array($name_query->get_result());
+    $activity_creator = $full_name["Name"];
+
+  
     echo "Password match";
     echo "_";
     echo $user_id;
+    echo "_";
+    echo $activity_creator;
+
+
 }
 else{
     echo "Password mismatch";
