@@ -3,23 +3,17 @@
 include('db_config.php');
 
 
-$name = $_POST["name"];
-$description = $_POST["description"];
+$first_name = $_POST["first_name"];
+$last_name = $_POST["last_name"];
 $location = $_POST["location"];
-$date = $_POST["date"];
-$capacity = $_POST["capacity"];
 $user_id = $_POST["user_id"];
-$tag = $_POST["tag"];
+
 
 
 //Prepare Query to Obtain Email from DB.
-$name_query = $mysqli->prepare("SELECT CONCAT(first_name , ' ' , last_name) AS Name FROM registered_user WHERE user_id=?");
-$name_query->bind_param("i",$user_id);
-$name_query->execute();
-
-//DB Full Name from UserID.
-$full_name = mysqli_fetch_array($name_query->get_result());
-$activity_creator = $full_name["Name"];
+$update_query = $mysqli->prepare("UPDATE registered_user SET first_name = $first_name, last_name = $last_name, country = $location WHERE user_id = ?;);
+$update_query->bind_param("i",$user_id);
+$update_query->execute();
 
 
 $query = $mysqli->prepare("INSERT INTO activity_created (name, description, location, date, capacity, activity_creator, creator_id, activity_tag) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"); 
