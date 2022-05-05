@@ -66,6 +66,9 @@ public class LogIn extends AppCompatActivity {
     String verification;
     public void OnClickLogIn(View view){
 
+        Intent intent = new Intent(this,Homepage.class);
+        startActivity(intent);
+
         String url1 = "https://mcprojs.000webhostapp.com/backend/log_in.php";
 
         //Perform to insert queries to DB.
@@ -75,11 +78,6 @@ public class LogIn extends AppCompatActivity {
         //Validate Information from DB
         logged_in = false;
         //If true save e-mail to sharefpref.
-
-        if(logged_in){
-            Intent intent = new Intent(this,Homepage.class);
-            startActivity(intent);
-        }
 
     }
 
@@ -168,7 +166,7 @@ public class LogIn extends AppCompatActivity {
                 Log.e("Tag", "Server Response is:" + total.toString() + ": " + serverResponseMessage + "\nResponse Code is: " + serverResponseCode);
 
                 verification = total.toString();
-                
+
 
                 //Log server return.
                 Log.e("test", "result from server: " + result_db1);

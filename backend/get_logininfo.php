@@ -31,8 +31,9 @@ $password_query->execute();
 //DB password is stored as a hashed password.
 $db_password = mysqli_fetch_array($password_query->get_result());
 $hashed_password_db = $db_password["password"];
+
 echo $hashed_password_db;
-$user_password = password_hash($password, PASSWORD_DEFAULT);
+$user_password = password_decrypt password_hash($password, PASSWORD_BCRYPT);
 
 //Password verification Boolean function
 if($verify_password = password_verify($user_password,$hashed_password)){
