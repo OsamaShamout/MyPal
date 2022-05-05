@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +24,13 @@ import java.util.regex.Pattern;
 public class CreateActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
-    Spinner spinner_list;
+    Spinner spinner_list_tags;
+    Spinner spinner_list_countries;
     EditText activity_name;
     EditText activity_description;
     EditText activity_date;
     TextView activity_capacity;
+
 
     //Increase-Decrease Activity Capacity variables
     private int capacity;
@@ -52,12 +55,21 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
 
 
 
-        //Define the spinner
-        spinner_list= findViewById(R.id.listOfTags);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.activity_tags, android.R.layout.simple_spinner_item);
+        //Define the spinner of tags
+        spinner_list_countries= findViewById(R.id.listofLocationsCreate);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.countries_available, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_list.setAdapter(adapter);
-        spinner_list.setOnItemSelectedListener(this);
+        spinner_list_countries.setAdapter(adapter);
+        spinner_list_countries.setOnItemSelectedListener(this);
+
+        //Define the spinner of tags
+        spinner_list_tags= findViewById(R.id.listOfTags);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.activity_tags, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_list_tags.setAdapter(adapter2);
+        spinner_list_tags.setOnItemSelectedListener(this);
+
+
 
     }
 
@@ -106,6 +118,7 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
     String activity_name_string;
     String activity_description_string;
     String activity_date_string;
+    String activity_location_string;
     String activity_tag_string;
     String activity_capacity_string;
     @SuppressLint("LongLogTag")
@@ -117,16 +130,55 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
         activity_date_string = activity_date.getText().toString();
         activity_tag_string = activity_capacity.getText().toString();
 
-        //Validate Data Is Correct
-        //Make sure a valid tag is chosen.
-        if(activity_tag_string.equalsIgnoreCase("Choose One")){
-            Toast.makeText(getApplicationContext(), "Please choose a valid tag", Toast.LENGTH_SHORT).show();
+        //                              Validate Data Is Correct
+        //                              -------------------------
+
+
+        //Ensure an activity name is given.
+        Pattern p1 = Pattern.compile("^(\\s?)+(.)+");
+        Matcher m1 = p1.matcher(activity_name_string);
+
+        if(m1.matches()) {
+             activity_name_string = m1.group(2);
+        }else{
+            Toast.makeText(getApplicationContext(), "Please enter a valid activity name", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        Log.e("Activity name is: " , activity_name_string);
+
+        //Ensure an activity description is given.
+        Pattern p2 = Pattern.compile("^(\\s?)+(.)+");
+        Matcher m2 = p2.matcher(activity_description_string);
+
+        if(m2.matches()) {
+            activity_description_string = m2.group(2);
+        }else{
+            Toast.makeText(getApplicationContext(), "Please enter a valid activity description", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Log.e("Activity description is: " , activity_description_string);
+
+        //Ensure an activity location is correctly given.
+        //Obtain Activity Location
+        AdapterView<?> parent = spinner_list_countries;
+        int number = spinner_list_countries.getSelectedItemPosition();
+        activity_location_string = spinner_list_countries.getItemAtPosition(number).toString();
+
+        //Ensure a valid country is chosen.
+        if(activity_location_string.equalsIgnoreCase("Choose Country")){
+            Toast.makeText(getApplicationContext(), "Please choose a country.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+
+        Log.e("Activity country is: " , activity_location_string);
+
         //Make sure a valid date is input.
-        Pattern p = Pattern.compile("((0[1-9]|[12][0-9]|[3][01])([/.\\-])(0[1-9]|1[0-2])(\\3)(20\\d\\d))");
-        Matcher m = p.matcher(activity_date_string);
+        Pattern p3 = Pattern.compile("((0[1-9]|[12][0-9]|[3][01])([/.\\-])(0[1-9]|1[0-2])(\\3)(20\\d\\d))");
+        Matcher m3 = p3.matcher(activity_date_string);
 
         //Format provided date to give out standardized input to DB.
         String day;
@@ -145,10 +197,10 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
 
         Log.e("This year is: " , String.valueOf(current_year));
 
-        if(m.matches()) {
-            day = m.group(2);
-            month = m.group(4);
-            year = m.group(6);
+        if(m3.matches()) {
+            day = m3.group(2);
+            month = m3.group(4);
+            year = m3.group(6);
         }
         else{
             Toast.makeText(getApplicationContext(), "Please enter a valid date.\nDD/MM/YYYY", Toast.LENGTH_SHORT).show();
@@ -181,32 +233,32 @@ public class CreateActivity extends AppCompatActivity implements AdapterView.OnI
             return;
         }
 
-        if(Integer.parseInt(day) < current_day){
+        if(Integer.parseInt(day) < current_day && current_month == Integer.parseInt(month)){
             Toast.makeText(getApplicationContext(), "Activity cannot be created in the past days.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        //Send Input to DB.
-
-
-
-
-
-
-
-        activity_date_string = day + "/" + month + "/" + year;
-        Log.e("Date from pattern: ", activity_date_string);
 
         //Obtain Activity Tag
-        AdapterView<?> parent = spinner_list;
-        int number = spinner_list.getSelectedItemPosition();
-        activity_tag_string = spinner_list.getItemAtPosition(number).toString();
+        AdapterView<?> parent1 = spinner_list_tags;
+        int number1 = spinner_list_tags.getSelectedItemPosition();
+        activity_tag_string = spinner_list_tags.getItemAtPosition(number1).toString();
+
+        //Ensure a valid tag is chosen.
+        if(activity_tag_string.equalsIgnoreCase("Choose Tag")){
+            Toast.makeText(getApplicationContext(), "Please choose a valid tag", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Log.e("Activity tag is: " , activity_tag_string);
+
+        Log.e("The activity name is: ","Name: " + activity_name_string + " Descr: " + " Date: " + activity_date_string + "Location: " + activity_location_string + "Tag: " +activity_tag_string + " Capacity: " + capacity);
 
 
-
-        Log.e("The activity name is: ","Name: " + activity_name_string + " Descr: " + " Date: " + activity_date_string + "Tag: " +activity_tag_string + " Capacity: " + capacity);
+        //Send Input to DB.
 
         Toast.makeText(getApplicationContext(), "Activity Successfully Created!", Toast.LENGTH_SHORT).show();
+
 
     }
 }

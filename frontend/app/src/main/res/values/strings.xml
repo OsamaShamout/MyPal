@@ -28,9 +28,25 @@
 
 
 
-    //tags array
+    //countries array
+    <string-array name="countries_available">
+        <item>Choose Country</item>
+        <item>Jordan</item>
+        <item>Lebanon</item>
+        <item>Syria</item>
+        <item>Palestine</item>
+        <item>Iraq</item>
+        <item>Egypt</item>
+        <item>Libya</item>
+        <item>Tunisia</item>
+        <item>Morrocco</item>
+        <item>UAE</item>
+        <item>Qatar</item>
+    </string-array>
+
+
     <string-array name="activity_tags">
-        <item>Choose One</item>
+        <item>Choose Tag</item>
         <item>SDG</item>
         <item>Outdoor</item>
         <item>Indoor</item>
