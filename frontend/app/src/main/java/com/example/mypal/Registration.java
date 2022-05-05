@@ -280,6 +280,7 @@ public class Registration extends AppCompatActivity {
                     Log.e("Split return", split_values[0]);
                     Log.e("Split user_id", split_values[1]);
                     Log.e("Split name", split_values[2]);
+                    Log.e("Split country", split_values[3]);
 
                     String returned_statement = split_values[0];
                     if(returned_statement.equalsIgnoreCase("Success")) {
@@ -289,6 +290,7 @@ public class Registration extends AppCompatActivity {
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("user_id", split_values[1]);
                         editor.putString("name",split_values[2]);
+                        editor.putString("country",split_values[2]);
                         editor.apply();
 
                         logged_in = true;

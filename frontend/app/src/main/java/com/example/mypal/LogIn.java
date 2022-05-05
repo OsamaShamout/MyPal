@@ -214,6 +214,7 @@ public class LogIn extends AppCompatActivity {
                     Log.e("Split return", split_values[0]);
                     Log.e("Split user_id", split_values[1]);
                     Log.e("Split name", split_values[2]);
+                    Log.e("Split country", split_values[3]);
                     //  user_id = Integer.parseInt(split_values[1].toString());
                     String returned_statement = split_values[0];
 
@@ -228,6 +229,7 @@ public class LogIn extends AppCompatActivity {
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("user_id",split_values[1]);
                         editor.putString("name",split_values[2]);
+                        editor.putString("country",split_values[3]);
                         editor.apply();
 
                         //Validate Information from DB

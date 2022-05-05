@@ -52,10 +52,6 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
         }
 
 
-
-
-
-
         Log.e("Hour is ", String.valueOf(hour));
 
 
