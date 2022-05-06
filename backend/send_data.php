@@ -2,12 +2,12 @@
 
 //THIS PHP FILE IS RESPONSIBLE FOR SENDING DATA INFO INTO MYSQL DB.
 
-//Get database information from db_config PHP file.
+//Get database information from db_config PHP file. w
 include ("db_config.php");
 
     //Obtain values from frontend
     $rate_lbp_buy = $_POST["buy"];
-    $rate_lbp_sell = $_POST["sell"]; 
+    $rate_lbp_sell = $_POST["sell"];       w
     $currency = $_POST["currency"];
     $amount_req = $_POST["amount"];
 

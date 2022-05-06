@@ -251,25 +251,23 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityButton1"
+                        android:id="@+id/activityTextView1P"
                         android:layout_width="154dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|start"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Road Trip"
                         android:textAllCaps="false"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/activityDate1"
+                        android:id="@+id/activityDate1P"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|clip_horizontal|start|left"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Thursday, May 5, 2022"
                         android:textColor="#606065"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -309,26 +307,23 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityButton2"
+                        android:id="@+id/activityTextView2P"
                         android:layout_width="154dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|start"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Road Trip"
                         android:textAllCaps="false"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/activityDate2"
+                        android:id="@+id/activityDate2P"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|clip_horizontal|start|left"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Thursday, May 5, 2022"
-                        android:textColor="#606065"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -367,19 +362,18 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityButton3"
+                        android:id="@+id/activityTextView3P"
                         android:layout_width="154dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|start"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Road Trip"
                         android:textAllCaps="false"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/activityDate3"
+                        android:id="@+id/activityDate3P"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|clip_horizontal|start|left"
@@ -426,23 +420,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_alert"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/userLocationProfile"
-        android:layout_width="240dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="167dp"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:foregroundGravity="left|bottom"
-        android:gravity="bottom|left"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameProfile"
-        app:layout_constraintVertical_bias="0.011" />
 
     <com.google.android.material.imageview.ShapeableImageView
 
@@ -494,5 +471,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.228" />
+
+    <TextView
+        android:id="@+id/userLocationProfile"
+        android:layout_width="180dp"
+        android:layout_height="32dp"
+        android:gravity="bottom"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.722"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.161" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

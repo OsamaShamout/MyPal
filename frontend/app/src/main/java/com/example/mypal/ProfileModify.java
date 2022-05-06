@@ -2,7 +2,6 @@ package com.example.mypal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -44,7 +43,7 @@ public class ProfileModify extends AppCompatActivity {
         setContentView(R.layout.activity_profily_modify);
 
         name_input = (EditText) findViewById(R.id.usernameProfilEditText);
-        location_input = (EditText) findViewById(R.id.userLocationProfile);
+        location_input = (EditText) findViewById(R.id.userLocationProfileEditText);
         email_input = (EditText) findViewById(R.id.userEmailEditText);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         user_id = preferences.getString("user_id", "");

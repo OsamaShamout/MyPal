@@ -4,9 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,19 +11,17 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -52,6 +47,23 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
     String user_id;
     String name;
     String country;
+
+    ImageView img1;
+    ImageView img2;
+    ImageView img3;
+
+    //Name Texts
+    TextView txt_n1;
+    TextView txt_n2;
+    TextView txt_n3;
+
+    //Date Texts
+    TextView txt_d1;
+    TextView txt_d2;
+    TextView txt_d3;
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
@@ -73,8 +85,21 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
             greetings.setText("Good evening,\n" +name+"!");
         }
 
+         img1 = (ImageView) findViewById(R.id.activityImage1);
+         img2 = (ImageView) findViewById(R.id.activityImage2);
+         img3 = (ImageView) findViewById(R.id.activityImage3);
 
-        Log.e("Hour is ", String.valueOf(hour));
+         txt_n1 = findViewById(R.id.activityTextView1);
+         txt_n2  = findViewById(R.id.activityTextView2);
+         txt_n3  = findViewById(R.id.activityTextView3);
+
+
+         txt_d1 = findViewById(R.id.activityDate1P);
+         txt_d2 = findViewById(R.id.activityDate2P);
+         txt_d3 = findViewById(R.id.activityDate3P);
+
+
+         Log.e("Hour is ", String.valueOf(hour));
 
 
         log_out = (ImageButton) findViewById(R.id.logoutButton);
@@ -82,37 +107,13 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavMenu);
 
         bottomNavigationView.setOnItemSelectedListener(this);
-//
-//        LinearLayout ll = (LinearLayout) findViewById(R.id.linearMain);
 
-//        // Create new LinearLayout
-//        LinearLayout linearLayout = new LinearLayout(this);
-//        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.MATCH_PARENT));
-//        linearLayout.setOrientation(LinearLayout.VERTICAL);
-//        linearLayout.setBackgroundColor(0xff99ccff);
-//
-//        // add ImageView
-//        ImageView iv = new ImageView(this);
-//
-//        //setting image resource
-//        iv.setImageResource(R.drawable.beirut);
-//        iv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT));
-//        linearLayout.addView(iv);
-//        //textView
-//        TextView tv = new TextView(this);
-//        tv.setText("Hello world");
-//        tv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT));
-//        tv.setTextSize(16);
-//        tv.setPadding(5, 3, 0, 3);
-//        linearLayout.addView(tv);
-//
-//        ll.addView(linearLayout);
-////
-        // Set context view
-        setContentView(R.layout.activity_homepage);
+        String url = "https://mcprojs.000webhostapp.com/backend/fetch_home.php";
+        GetActivitiesfromDB task = new GetActivitiesfromDB();
+        task.execute(url);
+
+
+
     }
 
     @Override
@@ -170,6 +171,22 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
         logout1.show();
 
     }
+    String activity1_name = "";
+    String activity1_description = "";
+    String activity1_location = "";
+    String activity1_date = "";
+
+    //Get the 3 activities data and convert to string
+    String activity2_name = "";
+    String activity2_description = "";
+    String activity2_location  = "";
+    String activity2_date  = "";
+
+    //Get the 3 activities data and convert to string
+    String activity3_name  = "";
+    String activity3_description = "";
+    String activity3_location = "";
+    String activity3_date = "";
 
     String verification;
     //Register User API
@@ -200,7 +217,7 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
                 StringBuffer packedData = new StringBuffer();
 
                 //Send the variables to their respective $_POST.
-                jo.put("user_id", user_id);
+                jo.put("creator_id", user_id);
                 jo.put("country", country);
 
                 //Pack data to be processed by PHP for $_POST.
@@ -262,21 +279,70 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
 
         }
 
-
         protected void onPostExecute(String s){
             super.onPostExecute(s);
-            try {
-                Log.e("TAG POST:",s);
+
+            try{
+                //Convert JSON Arrays into Strings.
+
+                JSONArray main_obj = new JSONArray(s);
+
+                //Obtain the 3 activites
+                JSONObject activity1 = main_obj.getJSONObject(0);
+                JSONObject activity2 = main_obj.getJSONObject(1);
+                JSONObject activity3 = main_obj.getJSONObject(2);
+
+                Log.e("Activity 1: ", activity1.toString());
+                Log.e("Activity 2: ", activity2.toString());
+                Log.e("Activity 3: ", activity3.toString());
 
 
+
+                //Get the 3 activities data and convert to string
+                String activity1_name = activity1.getString("name");
+                String activity1_description = activity1.getString("description");
+                String activity1_location = activity1.getString("location");
+                String activity1_date = activity1.getString("date");
+
+                //Get the 3 activities data and convert to string
+                String activity2_name = activity2.getString("name");
+                String activity2_description = activity2.getString("description");
+                String activity2_location = activity2.getString("location");
+                String activity2_date = activity3.getString("date");
+
+                //Get the 3 activities data and convert to string
+                String activity3_name = activity3.getString("name");
+                String activity3_description = activity3.getString("description");
+                String activity3_location = activity3.getString("location");
+                String activity3_date = activity3.getString("date");
+
+                Log.e("Activity 1 name: ", activity1_name);
+                Log.e("Activity 1 date: ", activity1_date);
+
+                Log.e("Activity 2 name: ", activity2_name);
+                Log.e("Activity 2 date: ", activity2_date);
+
+                Log.e("Activity 3 name: ", activity3_name);
+                Log.e("Activity 3 date: ", activity3_date);
+
+                //Cannot set from backfround, run on main thread
+                        //Set names
+                        txt_n1.setText(activity1_name);
+                        txt_n2.setText(activity2_name);
+                        txt_n3.setText(activity3_name);
+
+                        //Set Dates
+                        txt_d1.setText(activity1_date);
+                        txt_d2.setText(activity2_date);
+                        txt_d3.setText(activity3_date);
 
 
             }
-            catch (Exception e){
+
+            catch(Exception e){
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Error in receiving data.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Error in post execution.", Toast.LENGTH_LONG).show();
             }
-
+        }
         }
     }
-}

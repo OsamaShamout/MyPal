@@ -165,7 +165,8 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:tag="num1">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/activityImage1"
@@ -173,6 +174,7 @@
                                 android:layout_height="142dp"
                                 android:layout_gravity="center|start|top"
                                 android:onClick="OnClickOpenActivity"
+                                android:tag="num1"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -183,7 +185,7 @@
 
 
                             <TextView
-                                android:id="@+id/activityButton1"
+                                android:id="@+id/activityTextView1"
                                 android:layout_width="154dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom|start"
@@ -210,13 +212,15 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:tag="num2">
 
                             <com.google.android.material.imageview.ShapeableImageView
-                                android:id="@+id/ActivityImage2"
+                                android:id="@+id/activityImage2"
                                 android:layout_width="205dp"
                                 android:layout_height="142dp"
                                 android:layout_gravity="center|start|top"
+                                android:tag="num2"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -225,7 +229,7 @@
                                 app:srcCompat="@drawable/laulib" />
 
                             <TextView
-                                android:id="@+id/activityButton2"
+                                android:id="@+id/activityTextView2"
                                 android:layout_width="154dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom|start"
@@ -252,13 +256,15 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:tag="num3">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/activityImage3"
                                 android:layout_width="205dp"
                                 android:layout_height="142dp"
                                 android:layout_gravity="center|start|top"
+                                android:tag="num3"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -268,7 +274,7 @@
 
 
                             <TextView
-                                android:id="@+id/activityButton3"
+                                android:id="@+id/activityTextView3"
                                 android:layout_width="154dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom|start"

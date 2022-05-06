@@ -214,7 +214,7 @@ public class LogIn extends AppCompatActivity {
                     Log.e("Split return", split_values[0]);
                     String returned_statement = split_values[0];
 
-                    if (returned_statement.equalsIgnoreCase("Password mismatch")) {
+                    if (returned_statement.equalsIgnoreCase("Password mismatch\n")) {
                         Toast.makeText(getApplicationContext(), "Incorrect Password", Toast.LENGTH_SHORT).show();
                         dialogue.setText("Incorrect Password");
                     }else if(returned_statement.equalsIgnoreCase("Password match")){

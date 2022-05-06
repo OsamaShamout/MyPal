@@ -270,7 +270,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityButton1"
+                        android:id="@+id/activity1TextView"
                         android:layout_width="154dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|start"
@@ -282,7 +282,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/activityDate1"
+                        android:id="@+id/activityDate1P"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|clip_horizontal|start|left"
@@ -328,7 +328,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityButton2"
+                        android:id="@+id/activityTextView2P"
                         android:layout_width="154dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|start"
@@ -340,7 +340,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/activityDate2"
+                        android:id="@+id/activityDate2P"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|clip_horizontal|start|left"
@@ -398,7 +398,7 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/activityDate3"
+                        android:id="@+id/activityDate3P"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|clip_horizontal|start|left"
@@ -447,7 +447,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/userLocationProfile"
+        android:id="@+id/userLocationProfileEditText"
         android:layout_width="242dp"
         android:layout_height="40dp"
         android:layout_marginStart="167dp"
