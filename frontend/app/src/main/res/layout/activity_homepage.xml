@@ -157,6 +157,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:id="@+id/linearMain"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -181,40 +182,35 @@
                                 tools:ignore="SpeakableTextPresentCheck" />
 
 
-                                <TextView
-                                    android:id="@+id/activityButton1"
-                                    android:layout_width="154dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="bottom|start"
-                                    android:background="#F9F9F9"
-                                    android:fontFamily="@font/poppins_medium"
-                                    android:text="Road Trip"
-                                    android:textAllCaps="false"
-                                    android:textColor="#000000"
-                                    android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/activityButton1"
+                                android:layout_width="154dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|start"
+                                android:background="#F9F9F9"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Road Trip"
+                                android:textAllCaps="false"
+                                android:textColor="#000000"
+                                android:textSize="16sp" />
 
-                                <TextView
-                                    android:id="@+id/activityDate1"
-                                    android:layout_width="220dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="bottom|clip_horizontal|start|left"
-                                    android:background="#F9F9F9"
-                                    android:fontFamily="@font/poppins_medium"
-                                    android:text="Thursday, May 5, 2022"
-                                    android:textColor="#606065"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
+                            <TextView
+                                android:id="@+id/activityDate1"
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|clip_horizontal|start|left"
+                                android:background="#F9F9F9"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Thursday, May 5, 2022"
+                                android:textColor="#606065"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
 
-                        <FrameLayout
-                            android:layout_width="220dp"
-                            android:layout_height="196dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/bottomNavMenu"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.225"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.54">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/ActivityImage2"
@@ -228,51 +224,35 @@
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/laulib" />
 
-                            <LinearLayout
-                                android:id="@+id/linearInFrame2"
-                                android:layout_width="match_parent"
-                                android:layout_height="51dp"
-                                android:layout_gravity="bottom|end"
+                            <TextView
+                                android:id="@+id/activityButton2"
+                                android:layout_width="154dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|start"
                                 android:background="#F9F9F9"
-                                android:backgroundTint="#F9F9F9"
-                                android:elevation="0sp"
-                                android:orientation="vertical">
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Road Trip"
+                                android:textAllCaps="false"
+                                android:textColor="#000000"
+                                android:textSize="16sp" />
 
-                                <TextView
-                                    android:id="@+id/activityButton2"
-                                    android:layout_width="154dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="bottom|start"
-                                    android:background="#F9F9F9"
-                                    android:fontFamily="@font/poppins_medium"
-                                    android:text="Road Trip"
-                                    android:textAllCaps="false"
-                                    android:textColor="#000000"
-                                    android:textSize="16sp" />
+                            <TextView
+                                android:id="@+id/activityDate2"
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|clip_horizontal|start|left"
+                                android:background="#F9F9F9"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Thursday, May 5, 2022"
+                                android:textColor="#606065"
+                                android:textSize="14sp" />
 
-                                <TextView
-                                    android:id="@+id/activityDate2"
-                                    android:layout_width="220dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="bottom|clip_horizontal|start|left"
-                                    android:background="#F9F9F9"
-                                    android:fontFamily="@font/poppins_medium"
-                                    android:text="Thursday, May 5, 2022"
-                                    android:textColor="#606065"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
+                        </LinearLayout>
 
-                        </FrameLayout>
-
-                        <FrameLayout
-                            android:layout_width="220dp"
-                            android:layout_height="196dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/bottomNavMenu"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.225"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.54">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/activityImage3"
@@ -286,41 +266,30 @@
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/laulib" />
 
-                            <LinearLayout
-                                android:id="@+id/linearInFrame3"
-                                android:layout_width="match_parent"
-                                android:layout_height="51dp"
-                                android:layout_gravity="bottom|end"
+
+                            <TextView
+                                android:id="@+id/activityButton3"
+                                android:layout_width="154dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|start"
                                 android:background="#F9F9F9"
-                                android:backgroundTint="#F9F9F9"
-                                android:elevation="0sp"
-                                android:orientation="vertical">
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Road Trip"
+                                android:textAllCaps="false"
+                                android:textColor="#000000"
+                                android:textSize="16sp" />
 
-                                <TextView
-                                    android:id="@+id/activityButton3"
-                                    android:layout_width="154dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="bottom|start"
-                                    android:background="#F9F9F9"
-                                    android:fontFamily="@font/poppins_medium"
-                                    android:text="Road Trip"
-                                    android:textAllCaps="false"
-                                    android:textColor="#000000"
-                                    android:textSize="16sp" />
-
-                                <TextView
-                                    android:id="@+id/activityDate3"
-                                    android:layout_width="220dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="bottom|clip_horizontal|start|left"
-                                    android:background="#F9F9F9"
-                                    android:fontFamily="@font/poppins_medium"
-                                    android:text="Thursday, May 5, 2022"
-                                    android:textColor="#606065"
-                                    android:textSize="14sp" />
-                            </LinearLayout>
-                        </FrameLayout>
-
+                            <TextView
+                                android:id="@+id/activityDate3"
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|clip_horizontal|start|left"
+                                android:background="#F9F9F9"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Thursday, May 5, 2022"
+                                android:textColor="#606065"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
                     </LinearLayout>
 

@@ -212,10 +212,6 @@ public class LogIn extends AppCompatActivity {
                 }else{
                     String[] split_values = s.split("_");
                     Log.e("Split return", split_values[0]);
-                    Log.e("Split user_id", split_values[1]);
-                    Log.e("Split name", split_values[2]);
-                    Log.e("Split country", split_values[3]);
-                    //  user_id = Integer.parseInt(split_values[1].toString());
                     String returned_statement = split_values[0];
 
                     if (returned_statement.equalsIgnoreCase("Password mismatch")) {
@@ -231,6 +227,10 @@ public class LogIn extends AppCompatActivity {
                         editor.putString("name",split_values[2]);
                         editor.putString("country",split_values[3]);
                         editor.apply();
+
+                        Log.e("Split user_id", split_values[1]);
+                        Log.e("Split name", split_values[2]);
+                        Log.e("Split country", split_values[3]);
 
                         //Validate Information from DB
                         if(logged_in) {
