@@ -47,6 +47,15 @@ $user_id = $db_userid["user_id"];
     //DB Full Name from UserID.
     $full_name = mysqli_fetch_array($name_query->get_result());
     $activity_creator = $full_name["Name"];
+    
+    //Prepare Query to Obtain Location from DB.
+    $location_query = $mysqli->prepare("SELECT country FROM registered_user WHERE user_id=?");
+    $location_query->bind_param("i",$user_id);
+    $location_query->execute();
+    
+    //DB Location from UserID.
+    $full_location = mysqli_fetch_array($location_query->get_result());
+    $location_now = $full_location["country"];
 
 $result = "Success";
 
@@ -55,6 +64,8 @@ echo "_";
 echo $user_id;
 echo "_";
 echo $activity_creator;
+echo "_";
+echo $country;
    
 }else{
     $result = "User already exist";
