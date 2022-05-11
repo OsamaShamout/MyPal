@@ -34,7 +34,10 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -63,6 +66,7 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
     TextView txt_d3;
 
 
+    Calendar right_now;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +78,10 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
         country = preferences.getString("country", "");
 
         greetings = (TextView) findViewById(R.id.greetingsMessage);
-        Calendar right_now = Calendar.getInstance();
+        right_now = Calendar.getInstance();
+
+
+
         int hour = right_now.get(Calendar.HOUR);
         if(hour >= 5 && hour <=11){
             greetings.setText("Good Morning,\n" + name+"!");
@@ -94,9 +101,9 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
          txt_n3  = findViewById(R.id.activityTextView3);
 
 
-         txt_d1 = findViewById(R.id.activityDate1P);
-         txt_d2 = findViewById(R.id.activityDate2P);
-         txt_d3 = findViewById(R.id.activityDate3P);
+         txt_d1 = findViewById(R.id.activityDate1);
+         txt_d2 = findViewById(R.id.activityDate2);
+         txt_d3 = findViewById(R.id.activityDate3);
 
 
          Log.e("Hour is ", String.valueOf(hour));
@@ -144,8 +151,19 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
     }
 
     public void OnClickOpenActivity(View view){
+        String tag = view.getTag().toString();
         Intent intent = new Intent(this,ActivitiesPage.class);
-        startActivity(intent);
+        intent.putExtra("activity_tag", tag);
+        if(tag.equalsIgnoreCase("txt_n_1") || tag.equalsIgnoreCase("txt_d_1")|| tag.equalsIgnoreCase("num1")) {
+            intent.putExtra("activity_id", activity1_id);
+            startActivity(intent);
+        }else if (tag.equalsIgnoreCase("txt_n_2") || tag.equalsIgnoreCase("txt_d_2") || tag.equalsIgnoreCase("num2")) {
+            intent.putExtra("activity_id", activity2_id);
+            startActivity(intent);
+        }else if (tag.equalsIgnoreCase("txt_n_3") || tag.equalsIgnoreCase("txt_d_3") || tag.equalsIgnoreCase("num3")) {
+            intent.putExtra("activity_id", activity3_id);
+            startActivity(intent);
+        }
 
     }
 
@@ -171,22 +189,29 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
         logout1.show();
 
     }
+    //Initialize Activity Variables
     String activity1_name = "";
     String activity1_description = "";
     String activity1_location = "";
     String activity1_date = "";
+    String activity1_id = "";
 
-    //Get the 3 activities data and convert to string
     String activity2_name = "";
     String activity2_description = "";
     String activity2_location  = "";
     String activity2_date  = "";
+    String activity2_id = "";
 
-    //Get the 3 activities data and convert to string
     String activity3_name  = "";
     String activity3_description = "";
     String activity3_location = "";
     String activity3_date = "";
+    String activity3_id = "";
+
+    //Activity Dates Formatted Strings
+    String activity1_date_new = "";
+    String activity2_date_new = "";
+    String activity3_date_new = "";
 
     String verification;
     //Register User API
@@ -217,8 +242,7 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
                 StringBuffer packedData = new StringBuffer();
 
                 //Send the variables to their respective $_POST.
-                jo.put("creator_id", user_id);
-                jo.put("country", country);
+                jo.put("user_id", user_id);
 
                 //Pack data to be processed by PHP for $_POST.
                 boolean firstValue = true;
@@ -279,13 +303,17 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
 
         }
 
-        protected void onPostExecute(String s){
-            super.onPostExecute(s);
 
-            try{
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+
                 //Convert JSON Arrays into Strings.
 
                 JSONArray main_obj = new JSONArray(s);
+
+                String obj_str = main_obj.toString();
+
 
                 //Obtain the 3 activites
                 JSONObject activity1 = main_obj.getJSONObject(0);
@@ -296,53 +324,72 @@ public class Homepage extends AppCompatActivity implements NavigationBarView.OnI
                 Log.e("Activity 2: ", activity2.toString());
                 Log.e("Activity 3: ", activity3.toString());
 
-
+                //Get the 3 activities data and convert to string
+                 activity1_name = activity1.getString("name");
+                 activity1_description = activity1.getString("description");
+                 activity1_location = activity1.getString("location");
+                 activity1_date = activity1.getString("date");
+                 activity1_id= activity1.getString("activity_id");
 
                 //Get the 3 activities data and convert to string
-                String activity1_name = activity1.getString("name");
-                String activity1_description = activity1.getString("description");
-                String activity1_location = activity1.getString("location");
-                String activity1_date = activity1.getString("date");
+                 activity2_name = activity2.getString("name");
+                 activity2_description = activity2.getString("description");
+                 activity2_location = activity2.getString("location");
+                 activity2_date = activity2.getString("date");
+                 activity2_id= activity2.getString("activity_id");
 
                 //Get the 3 activities data and convert to string
-                String activity2_name = activity2.getString("name");
-                String activity2_description = activity2.getString("description");
-                String activity2_location = activity2.getString("location");
-                String activity2_date = activity3.getString("date");
-
-                //Get the 3 activities data and convert to string
-                String activity3_name = activity3.getString("name");
-                String activity3_description = activity3.getString("description");
-                String activity3_location = activity3.getString("location");
-                String activity3_date = activity3.getString("date");
+                 activity3_name = activity3.getString("name");
+                 activity3_description = activity3.getString("description");
+                 activity3_location = activity3.getString("location");
+                 activity3_date = activity3.getString("date");
+                 activity3_id= activity3.getString("activity_id");
 
                 Log.e("Activity 1 name: ", activity1_name);
                 Log.e("Activity 1 date: ", activity1_date);
+                Log.e("Activity 3 ID: ", activity1_id);
 
                 Log.e("Activity 2 name: ", activity2_name);
                 Log.e("Activity 2 date: ", activity2_date);
+                Log.e("Activity 3 ID: ", activity2_id);
 
                 Log.e("Activity 3 name: ", activity3_name);
                 Log.e("Activity 3 date: ", activity3_date);
+                Log.e("Activity 3 ID: ", activity3_id);
 
-                //Cannot set from backfround, run on main thread
-                        //Set names
-                        txt_n1.setText(activity1_name);
-                        txt_n2.setText(activity2_name);
-                        txt_n3.setText(activity3_name);
+                SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+                Date dt1 = format1.parse(activity1_date);
+                Date dt2 = format1.parse(activity2_date);
+                Date dt3 = format1.parse(activity3_date);
 
-                        //Set Dates
-                        txt_d1.setText(activity1_date);
-                        txt_d2.setText(activity2_date);
-                        txt_d3.setText(activity3_date);
+
+                //Format day name of event occurring
+                DateFormat format2 = new SimpleDateFormat("EEE, MMM d, ''yy");
+                activity1_date_new = format2.format(dt1);
+                activity2_date_new = format2.format(dt2);
+                activity3_date_new = format2.format(dt3);
+
+
+
+
+                //Cannot set from background, run on main thread
+                //Set names
+                txt_n1.setText(activity1_name);
+                txt_n2.setText(activity2_name);
+                txt_n3.setText(activity3_name);
+
+                //Set Dates
+                txt_d1.setText(activity1_date_new);
+                txt_d2.setText(activity2_date_new);
+                txt_d3.setText(activity3_date_new);
+
 
 
             }
-
             catch(Exception e){
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Error in post execution.", Toast.LENGTH_LONG).show();
             }
         }
-        }
     }
+}

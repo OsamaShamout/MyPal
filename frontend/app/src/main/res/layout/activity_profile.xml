@@ -195,8 +195,8 @@
 
     <HorizontalScrollView
         android:id="@+id/horizontalScollActivities"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="412dp"
+        android:layout_height="209dp"
         android:layout_marginStart="70dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -233,6 +233,8 @@
                     android:layout_width="205dp"
                     android:layout_height="142dp"
                     android:layout_gravity="center|start|top"
+                    android:onClick="OnClickOpenActivity"
+                    android:tag="num1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -257,6 +259,8 @@
                         android:layout_gravity="bottom|start"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
+                        android:onClick="OnClickOpenActivity"
+                        android:tag="txt_n_1"
                         android:textAllCaps="false"
                         android:textColor="#000000"
                         android:textSize="16sp" />
@@ -268,6 +272,8 @@
                         android:layout_gravity="bottom|clip_horizontal|start|left"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
+                        android:onClick="OnClickOpenActivity"
+                        android:tag="txt_d_1"
                         android:textColor="#606065"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -289,6 +295,8 @@
                     android:layout_width="205dp"
                     android:layout_height="142dp"
                     android:layout_gravity="center|start|top"
+                    android:onClick="OnClickOpenActivity"
+                    android:tag="num2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -313,6 +321,8 @@
                         android:layout_gravity="bottom|start"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
+                        android:onClick="OnClickOpenActivity"
+                        android:tag="txt_n_2"
                         android:textAllCaps="false"
                         android:textColor="#000000"
                         android:textSize="16sp" />
@@ -324,6 +334,8 @@
                         android:layout_gravity="bottom|clip_horizontal|start|left"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
+                        android:onClick="OnClickOpenActivity"
+                        android:tag="txt_n_2"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -344,6 +356,8 @@
                     android:layout_width="205dp"
                     android:layout_height="142dp"
                     android:layout_gravity="center|start|top"
+                    android:onClick="OnClickOpenActivity"
+                    android:tag="num3"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -368,6 +382,8 @@
                         android:layout_gravity="bottom|start"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
+                        android:onClick="OnClickOpenActivity"
+                        android:tag="txt_n_3"
                         android:textAllCaps="false"
                         android:textColor="#000000"
                         android:textSize="16sp" />
@@ -379,6 +395,8 @@
                         android:layout_gravity="bottom|clip_horizontal|start|left"
                         android:background="#F9F9F9"
                         android:fontFamily="@font/poppins_medium"
+                        android:onClick="OnClickOpenActivity"
+                        android:tag="txt_n_3"
                         android:text="Thursday, May 5, 2022"
                         android:textColor="#606065"
                         android:textSize="14sp" />
@@ -483,6 +501,6 @@
         app:layout_constraintHorizontal_bias="0.722"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintVertical_bias="0.177" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

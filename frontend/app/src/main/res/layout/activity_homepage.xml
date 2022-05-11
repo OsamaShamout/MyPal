@@ -180,7 +180,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
-                                app:srcCompat="@drawable/laulib"
+                                app:srcCompat="@drawable/retro_filter_beach_plain"
                                 tools:ignore="SpeakableTextPresentCheck" />
 
 
@@ -191,7 +191,8 @@
                                 android:layout_gravity="bottom|start"
                                 android:background="#F9F9F9"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Road Trip"
+                                android:onClick="OnClickOpenActivity"
+                                android:tag="txt_n_1"
                                 android:textAllCaps="false"
                                 android:textColor="#000000"
                                 android:textSize="16sp" />
@@ -203,7 +204,7 @@
                                 android:layout_gravity="bottom|clip_horizontal|start|left"
                                 android:background="#F9F9F9"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Thursday, May 5, 2022"
+                                android:tag="txt_d_1"
                                 android:textColor="#606065"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -220,13 +221,14 @@
                                 android:layout_width="205dp"
                                 android:layout_height="142dp"
                                 android:layout_gravity="center|start|top"
+                                android:onClick="OnClickOpenActivity"
                                 android:tag="num2"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
-                                app:srcCompat="@drawable/laulib" />
+                                app:srcCompat="@drawable/beirut" />
 
                             <TextView
                                 android:id="@+id/activityTextView2"
@@ -235,7 +237,8 @@
                                 android:layout_gravity="bottom|start"
                                 android:background="#F9F9F9"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Road Trip"
+                                android:onClick="OnClickOpenActivity"
+                                android:tag="txt_n_2"
                                 android:textAllCaps="false"
                                 android:textColor="#000000"
                                 android:textSize="16sp" />
@@ -247,7 +250,8 @@
                                 android:layout_gravity="bottom|clip_horizontal|start|left"
                                 android:background="#F9F9F9"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Thursday, May 5, 2022"
+                                android:onClick="OnClickOpenActivity"
+                                android:tag="txt_d_2"
                                 android:textColor="#606065"
                                 android:textSize="14sp" />
 
@@ -264,6 +268,7 @@
                                 android:layout_width="205dp"
                                 android:layout_height="142dp"
                                 android:layout_gravity="center|start|top"
+                                android:onClick="OnClickOpenActivity"
                                 android:tag="num3"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -280,7 +285,8 @@
                                 android:layout_gravity="bottom|start"
                                 android:background="#F9F9F9"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Road Trip"
+                                android:onClick="OnClickOpenActivity"
+                                android:tag="txt_n_3"
                                 android:textAllCaps="false"
                                 android:textColor="#000000"
                                 android:textSize="16sp" />
@@ -292,7 +298,8 @@
                                 android:layout_gravity="bottom|clip_horizontal|start|left"
                                 android:background="#F9F9F9"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Thursday, May 5, 2022"
+                                android:onClick="OnClickOpenActivity"
+                                android:tag="txt_d_3"
                                 android:textColor="#606065"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -364,7 +371,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
-                                app:srcCompat="@drawable/laulib" />
+                                app:srcCompat="@drawable/animal" />
 
                                 <TextView
                                     android:id="@+id/activityAroundText1"

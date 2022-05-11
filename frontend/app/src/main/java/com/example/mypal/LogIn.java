@@ -241,13 +241,6 @@ public class LogIn extends AppCompatActivity {
 
                 }
 
-
-
-
-
-
-
-
             }
             catch (Exception e){
                 e.printStackTrace();

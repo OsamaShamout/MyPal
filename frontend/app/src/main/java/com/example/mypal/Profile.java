@@ -30,6 +30,9 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -40,6 +43,10 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
     TextView user_name;
     TextView user_location;
     BottomNavigationView bottomNavigationView;
+
+    String activity1_id;
+    String activity2_id;
+    String activity3_id;
 
     String name;
     String country;
@@ -69,9 +76,8 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
         country = preferences.getString("country", "");
 
         user_name.setText(name);
-        user_location.setText("Jordan");
+        user_location.setText("\n" + country);
 
-        Log.e("COUUNTRY IS:", country);
 
         txt_n1 = findViewById(R.id.activityTextView1P);
         txt_n2  = findViewById(R.id.activityTextView2P);
@@ -115,6 +121,22 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
 
 
 
+    public void OnClickOpenActivity(View view){
+        String tag = view.getTag().toString();
+        Intent intent = new Intent(this,ActivitiesPage.class);
+        intent.putExtra("activity_tag", tag);
+        if(tag.equalsIgnoreCase("txt_n_1") || tag.equalsIgnoreCase("txt_d_1")|| tag.equalsIgnoreCase("num1")) {
+            intent.putExtra("activity_id", activity1_id);
+            startActivity(intent);
+        }else if (tag.equalsIgnoreCase("txt_n_2") || tag.equalsIgnoreCase("txt_d_2") || tag.equalsIgnoreCase("num2")) {
+            intent.putExtra("activity_id", activity2_id);
+            startActivity(intent);
+        }else if (tag.equalsIgnoreCase("txt_n_3") || tag.equalsIgnoreCase("txt_d_3") || tag.equalsIgnoreCase("num3")) {
+            intent.putExtra("activity_id", activity3_id);
+            startActivity(intent);
+        }
+
+    }
     String verification;
     public class GetActivitiesfromDB extends AsyncTask<String, Void, String> {
         protected String doInBackground(String... urls) {
@@ -143,7 +165,7 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
                 StringBuffer packedData = new StringBuffer();
 
                 //Send the variables to their respective $_POST.
-                jo.put("creator_id", user_id);
+                jo.put("user_id", user_id);
 
                 //Pack data to be processed by PHP for $_POST.
                 boolean firstValue = true;
@@ -205,29 +227,39 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
         }
 
         //Get the 3 activities data and convert to string
-        String activity1_name;
+        String activity1_name = "";
         String activity1_description;
         String activity1_location;
         String activity1_date;
 
         //Get the 3 activities data and convert to string
-        String activity2_name;
+        String activity2_name = "";
         String activity2_description;
         String activity2_location;
         String activity2_date;
 
         //Get the 3 activities data and convert to string
-        String activity3_name;
+        String activity3_name = "";
         String activity3_description;
         String activity3_location;
         String activity3_date;
+
+        //Activity Dates Formatted
+        String activity1_date_new = "";
+        String activity2_date_new = "";
+        String activity3_date_new = "";
+
         protected void onPostExecute(String s){
             super.onPostExecute(s);
+            try {
 
-            try{
+
                 //Convert JSON Arrays into Strings.
 
                 JSONArray main_obj = new JSONArray(s);
+
+                String obj_str = main_obj.toString();
+
 
                 //Obtain the 3 activites
                 JSONObject activity1 = main_obj.getJSONObject(0);
@@ -238,55 +270,63 @@ public class Profile extends AppCompatActivity implements NavigationBarView.OnIt
                 Log.e("Activity 2: ", activity2.toString());
                 Log.e("Activity 3: ", activity3.toString());
 
-
+                //Get the 3 activities data and convert to string
+                activity1_name = activity1.getString("name");
+                activity1_description = activity1.getString("description");
+                activity1_location = activity1.getString("location");
+                activity1_date = activity1.getString("date");
+                activity1_id= activity1.getString("activity_id");
 
                 //Get the 3 activities data and convert to string
-                 activity1_name = activity1.getString("name");
-                 activity1_description = activity1.getString("description");
-                 activity1_location = activity1.getString("location");
-                 activity1_date = activity1.getString("date");
+                activity2_name = activity2.getString("name");
+                activity2_description = activity2.getString("description");
+                activity2_location = activity2.getString("location");
+                activity2_date = activity2.getString("date");
+                activity2_id= activity2.getString("activity_id");
 
                 //Get the 3 activities data and convert to string
-                 activity2_name = activity2.getString("name");
-                 activity2_description = activity2.getString("description");
-                 activity2_location = activity2.getString("location");
-                 activity2_date = activity3.getString("date");
-
-                //Get the 3 activities data and convert to string
-                activity3_name = activity2.getString("name");
-                activity3_description = activity2.getString("description");
-                activity3_location = activity2.getString("location");
+                activity3_name = activity3.getString("name");
+                activity3_description = activity3.getString("description");
+                activity3_location = activity3.getString("location");
                 activity3_date = activity3.getString("date");
-
-                //Get the 3 activities data and convert to string
-                 activity3_name = activity3.getString("name");
-                 activity3_description = activity3.getString("description");
-                 activity3_location = activity3.getString("location");
-                 activity3_date = activity3.getString("date");
+                activity3_id= activity3.getString("activity_id");
 
                 Log.e("Activity 1 name: ", activity1_name);
                 Log.e("Activity 1 date: ", activity1_date);
+                Log.e("Activity 3 ID: ", activity1_id);
 
                 Log.e("Activity 2 name: ", activity2_name);
                 Log.e("Activity 2 date: ", activity2_date);
+                Log.e("Activity 3 ID: ", activity2_id);
 
                 Log.e("Activity 3 name: ", activity3_name);
                 Log.e("Activity 3 date: ", activity3_date);
+                Log.e("Activity 3 ID: ", activity3_id);
 
-                //Cannot set from backfround, run on main thread
+                SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+                Date dt1 = format1.parse(activity1_date);
+                Date dt2 = format1.parse(activity2_date);
+                Date dt3 = format1.parse(activity3_date);
+
+
+                //Format day name of event occurring
+                DateFormat format2 = new SimpleDateFormat("EEE, MMM d, ''yy");
+                activity1_date_new = format2.format(dt1);
+                activity2_date_new = format2.format(dt2);
+                activity3_date_new = format2.format(dt3);
+
+                //Cannot set from background, run on main thread
                 //Set names
                 txt_n1.setText(activity1_name);
                 txt_n2.setText(activity2_name);
                 txt_n3.setText(activity3_name);
 
                 //Set Dates
-                txt_d1.setText(activity1_date);
-                txt_d2.setText(activity2_date);
-                txt_d3.setText(activity3_date);
-
+                txt_d1.setText(activity1_date_new);
+                txt_d2.setText(activity2_date_new);
+                txt_d3.setText(activity3_date_new);
 
             }
-
             catch(Exception e){
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Error in post execution.", Toast.LENGTH_LONG).show();

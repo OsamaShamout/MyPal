@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/circular.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/email_2.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable/homescreen.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/ic_heart_NA.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1555" />
@@ -20,10 +21,10 @@
         <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.17" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.2933258056640625" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.15785813630041726" />
-        <entry key="app/src/main/res/layout/activity_activities_page.xml" value="0.722567287784679" />
+        <entry key="app/src/main/res/layout/activity_activities_page.xml" value="0.5102339181286549" />
         <entry key="app/src/main/res/layout/activity_create.xml" value="0.249249267578125" />
         <entry key="app/src/main/res/layout/activity_favorite_page.xml" value="0.1996481970096746" />
-        <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.187103271484375" />
+        <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.1913665771484374" />
         <entry key="app/src/main/res/layout/activity_homepage_trial.xml" value="0.34030837004405284" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.34643730978363924" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.5488733927408854" />

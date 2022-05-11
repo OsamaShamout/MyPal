@@ -6,12 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".ActivitiesPage">
 
+    <TextView
+        android:id="@+id/activity_date_ac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="right"
+        android:text="May. 2nd, 2022"
+        android:textColor="#828282"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
+
+    <TextView
+        android:id="@+id/activity_loc_ac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/nunito_sans"
+        android:gravity="right"
+        android:text="Lebanon"
+        android:textColor="#828282"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.805"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
+
     <ImageButton
         android:id="@+id/decreaseMemberButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="616dp"
         android:layout_marginBottom="76dp"
         android:background="#F4F4F4"
         android:onClick="decreaseMembers"
@@ -20,7 +53,7 @@
         app:layout_constraintHorizontal_bias="0.381"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.99"
         app:srcCompat="@drawable/subtract"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -63,7 +96,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/activityName2"
+        android:id="@+id/activity_creator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -127,7 +160,7 @@
         app:srcCompat="@drawable/animal" />
 
     <Button
-        android:id="@+id/Outdoors"
+        android:id="@+id/tagButton"
         android:layout_width="69dp"
         android:layout_height="48dp"
         android:background="#806FCF97"
@@ -178,7 +211,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/activityDescription"
+        android:id="@+id/activityDescriptionActivity"
         android:layout_width="330dp"
         android:layout_height="98dp"
         android:layout_marginStart="16dp"
@@ -251,7 +284,7 @@
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
+        app:layout_constraintVertical_bias="0.882"
         app:srcCompat="@drawable/vector"
         tools:ignore="SpeakableTextPresentCheck" />
 

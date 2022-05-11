@@ -61,8 +61,8 @@ if($user_hashed_fe == $db_pass){
 
 
  //Prepare Query to Obtain Location from DB.
-$location_query = $mysqli->prepare("SELECT country FROM registered_user WHERE user_id=?");
-$location_query->bind_param("i",$user_id);
+$location_query = $mysqli->prepare("SELECT country FROM registered_user WHERE email=?");
+$location_query->bind_param("s",$email);
 $location_query->execute();
 
 //DB Location from UserID.
@@ -75,7 +75,7 @@ $location_now = $full_location["country"];
     echo "_";
     echo $activity_creator;
      echo "_";
-    echo $country;
+    echo $location_now;
 
 
 }
