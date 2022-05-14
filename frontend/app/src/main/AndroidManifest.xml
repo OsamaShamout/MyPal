@@ -35,10 +35,7 @@
         <activity
             android:name=".Registration"
             android:exported="false" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
+
         <activity
             android:name=".LogIn"
             android:exported="false" />
